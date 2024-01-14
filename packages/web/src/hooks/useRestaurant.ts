@@ -1,8 +1,8 @@
-// useRestaurantData.ts
 import { useState, useEffect } from "react";
+import { Restaurant } from "../common/types";
 
-export const useRestaurantData = (apiUrl: string) => {
-  const [restaurantData, setRestaurantData] = useState<any | null>(null);
+export const useRestaurant = (apiUrl: string) => {
+  const [restaurantData, setRestaurantData] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

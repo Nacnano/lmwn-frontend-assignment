@@ -1,4 +1,3 @@
-// RestaurantMenuList.tsx
 import React from "react";
 import MenuDetails from "./MenuDetails";
 

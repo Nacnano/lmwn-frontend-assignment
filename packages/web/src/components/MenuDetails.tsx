@@ -1,4 +1,3 @@
-// MenuDetails.tsx
 import React from "react";
 
 interface MenuDetailsProps {

@@ -1,4 +1,3 @@
-// RestaurantDetails.tsx
 import React from "react";
 
 interface RestaurantDetailsProps {
