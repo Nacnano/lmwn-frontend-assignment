@@ -1,10 +1,14 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Landing from "./pages/Landing";
 
 function App() {
   return (
-    <div>
-      <h1>Edit this app to complete LINE MAN Wongnai Frontend Assignment!</h1>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
