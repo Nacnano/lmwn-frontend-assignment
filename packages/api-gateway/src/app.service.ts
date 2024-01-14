@@ -5,8 +5,8 @@ import { Menu } from './entities/menu.entity';
 
 @Injectable()
 export class AppService {
-  private apiUrl =
-    'https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api';
+  private apiUrl = process.env.API_URL;
+  // private apiUrl = 'https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api';
 
   async fetchData<T>(url: string): Promise<T> {
     try {
