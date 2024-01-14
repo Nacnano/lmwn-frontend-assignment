@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Restaurant } from "@/common/types";
+import { Restaurant } from "common/types";
 
 export const useRestaurant = (apiUrl: string) => {
   const [restaurantData, setRestaurantData] = useState<Restaurant | null>(null);
