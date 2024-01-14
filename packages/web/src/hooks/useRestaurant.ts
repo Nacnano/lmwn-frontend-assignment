@@ -1,26 +1,33 @@
 import { useState, useEffect } from "react";
-import { Restaurant } from "common/types";
+import axios from "axios";
+import { Restaurant } from "../common/types";
 
-export const useRestaurant = (apiUrl: string) => {
-  const [restaurantData, setRestaurantData] = useState<Restaurant | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+interface UseRestaurantProps {
+  restaurantId: number;
+}
+
+const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchRestaurantData = async () => {
       try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setRestaurantData(data);
+        const restaurantResponse = await axios.get(
+          `${process.env.REACT_APP_API_URL}/restaurants/${restaurantId}.json`
+        );
+        setRestaurant(restaurantResponse.data);
       } catch (error) {
-        setError("Error fetching data");
-      } finally {
-        setLoading(false);
+        console.error(
+          "Error fetching restaurant data from " + restaurantId,
+          error
+        );
       }
     };
 
-    fetchData();
-  }, [apiUrl]);
+    fetchRestaurantData();
+  }, [restaurantId]);
 
-  return { restaurantData, loading, error };
+  return { restaurant };
 };
+
+export default useRestaurant;
