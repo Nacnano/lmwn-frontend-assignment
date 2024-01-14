@@ -1,12 +1,16 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Restaurant } from './entities/restaurant.entity';
+import { Menu } from './entities/menu.entity';
 
 @Controller()
 export class AppController {
   constructor(private readonly apiService: AppService) {}
 
   @Get('restaurants/:restaurantId')
-  async getRestaurant(@Param('restaurantId') restaurantId: string) {
+  async getRestaurant(
+    @Param('restaurantId') restaurantId: string,
+  ): Promise<Restaurant> {
     return this.apiService.getRestaurant(restaurantId);
   }
 
@@ -14,7 +18,7 @@ export class AppController {
   async getShortMenu(
     @Param('restaurantId') restaurantId: string,
     @Param('menuName') menuName: string,
-  ) {
+  ): Promise<Menu> {
     return this.apiService.getShortMenu(restaurantId, menuName);
   }
 
@@ -22,7 +26,7 @@ export class AppController {
   async getFullMenu(
     @Param('restaurantId') restaurantId: string,
     @Param('menuName') menuName: string,
-  ) {
+  ): Promise<Menu> {
     return this.apiService.getFullMenu(restaurantId, menuName);
   }
 }
