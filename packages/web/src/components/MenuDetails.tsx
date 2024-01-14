@@ -1,11 +1,8 @@
 import React from "react";
+import { Menu } from "../common/types";
 
 interface MenuDetailsProps {
-  menu: {
-    name: string;
-    fullPrice: number;
-    // Add more fields as needed
-  };
+  menu: Menu;
 }
 
 const MenuDetails: React.FC<MenuDetailsProps> = ({ menu }) => {

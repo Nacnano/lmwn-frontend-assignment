@@ -7,15 +7,15 @@ interface UseMenuDetailsProps {
 
 interface UseMenuDetailsResult {
   menuDetails: Menu | null;
-  error: Error | null;
+  error: Error | null | unknown;
 }
 
 const useMenuDetails = ({
   restaurantId,
   menuName,
 }: UseMenuDetailsProps): UseMenuDetailsResult => {
-  const [menuDetails, setMenuDetails] = useState<MenuDetails | null>(null);
-  const [error, setError] = useState<Error | null>(null);
+  const [menuDetails, setMenuDetails] = useState<Menu | null>(null);
+  const [error, setError] = useState<Error | null | unknown>(null);
 
   useEffect(() => {
     const fetchMenuDetails = async () => {
