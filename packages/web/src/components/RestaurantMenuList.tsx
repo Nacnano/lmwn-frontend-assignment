@@ -1,5 +1,5 @@
 import React from "react";
-import MenuDetails from "./MenuDetails";
+import MenuDetails from "@/components/MenuDetails";
 
 interface RestaurantMenuListProps {
   menus: Array<{
