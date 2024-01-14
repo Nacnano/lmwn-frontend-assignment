@@ -1,12 +1,9 @@
 import React from "react";
 import MenuDetails from "./MenuDetails";
+import { FullMenu, ShortMenu } from "@common/types";
 
 interface RestaurantMenuListProps {
-  menus: Array<{
-    name: string;
-    fullPrice: number;
-    // Add more fields as needed
-  }>;
+  menus: ShortMenu[] | FullMenu[];
 }
 
 const RestaurantMenuList: React.FC<RestaurantMenuListProps> = ({ menus }) => {

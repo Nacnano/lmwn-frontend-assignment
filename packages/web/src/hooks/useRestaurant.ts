@@ -13,7 +13,7 @@ const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
     const fetchRestaurantData = async () => {
       try {
         const restaurantResponse = await axios.get(
-          `${process.env.REACT_APP_API_URL}/restaurants/${restaurantId}.json`
+          `${process.env.REACT_APP_API_URL}/restaurants/${restaurantId}`
         );
         setRestaurant(restaurantResponse.data);
       } catch (error) {
