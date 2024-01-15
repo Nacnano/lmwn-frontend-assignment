@@ -1,6 +1,7 @@
-import React from "react";
+import { useState } from "react";
 import { Menu, MenuType } from "../common/types";
 import useMenu from "../hooks/useMenu";
+import MenuModal from "./MenuModal";
 
 interface MenuDetailsProps {
   menuName: string;
@@ -8,19 +9,22 @@ interface MenuDetailsProps {
 
 const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
-
   if (!menu) {
     return null;
   }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const isOutofOrder = menu.totalInStock - menu.sold === 0;
 
   return (
     <>
-      <div className="border p-4 rounded-md shadow-md mb-4 ">
+      <div className="border p-4 rounded-md shadow-md mb-4" onClick={openModal}>
         {isOutofOrder && (
-          <div className="absolute object-fill">
-            <div className="flex items-center justify-center bg-gray-200 text-red-500 font-bold">
+          <div className="relative  ">
+            <div className="inset-5 bg-gray-200 text-red-500 font-bold">
               <p className="text-center">OUT OF ORDER</p>
             </div>
           </div>
@@ -66,6 +70,11 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
             Sold: {menu?.sold} | Total in Stock: {menu?.totalInStock}
           </p>
         </div>
+        <MenuModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          menu={menu}
+        />
       </div>
     </>
   );
