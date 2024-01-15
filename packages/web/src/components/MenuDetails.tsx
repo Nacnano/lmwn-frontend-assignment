@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu } from "../common/types";
+import { Menu, MenuType } from "../common/types";
 import useMenu from "../hooks/useMenu";
 
 interface MenuDetailsProps {
@@ -7,14 +7,25 @@ interface MenuDetailsProps {
 }
 
 const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
-  const menu = useMenu({ menuName }) as Menu;
+  const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
+
+  if (!menu) {
+    return null;
+  }
 
   const isOutofOrder = menu.totalInStock - menu.sold === 0;
 
   return (
     <>
-      <div className={isOutofOrder ? "opacity-70" : ""}>
-        <div className="border p-4 rounded-md shadow-md mb-4">
+      <div className="border p-4 rounded-md shadow-md mb-4 ">
+        {isOutofOrder && (
+          <div className="absolute object-fill">
+            <div className="flex items-center justify-center bg-gray-200 text-red-500 font-bold">
+              <p className="text-center">OUT OF ORDER</p>
+            </div>
+          </div>
+        )}
+        <div className={isOutofOrder ? "opacity-50" : ""}>
           <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
           <p className="text-gray-700">Price: ${menu?.fullPrice}</p>
           {menu?.thumbnailImage && (
@@ -25,7 +36,7 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
               style={{ maxWidth: "100%" }}
             />
           )}
-          {menu?.options && (
+          {/* {menu?.options && (
             <div className="mt-2">
               <h3 className="text-lg font-bold mb-2">Options:</h3>
               <ul>
@@ -39,7 +50,7 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
                 ))}
               </ul>
             </div>
-          )}
+          )} */}
           {menu?.discountedPercent > 0 && (
             <p className="mt-2 text-green-600">
               Discount: {menu?.discountedPercent}% off
