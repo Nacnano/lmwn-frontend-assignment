@@ -7,21 +7,25 @@ interface MenuDetailsProps {
   menuName: string;
 }
 
-const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
+const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOpen = () => setIsModalOpen(true);
+  const handleClose = () => setIsModalOpen(false);
+
   if (!menu) {
     return null;
   }
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   const isOutofOrder = menu.totalInStock - menu.sold === 0;
 
   return (
     <>
-      <div className="border p-4 rounded-md shadow-md mb-4" onClick={openModal}>
+      <div
+        className="border p-4 rounded-md shadow-md mb-4"
+        onClick={handleOpen}
+      >
         {isOutofOrder && (
           <div className="relative  ">
             <div className="inset-5 bg-gray-200 text-red-500 font-bold">
@@ -70,11 +74,7 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
             Sold: {menu?.sold} | Total in Stock: {menu?.totalInStock}
           </p>
         </div>
-        <MenuModal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          menu={menu}
-        />
+        <MenuModal isOpen={isModalOpen} onClose={handleClose} menu={menu} />
       </div>
     </>
   );
