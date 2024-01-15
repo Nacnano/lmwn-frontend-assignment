@@ -1,6 +1,5 @@
 import React from "react";
 import MenuDetails from "./MenuDetails";
-import { Menu } from "../common/types";
 
 interface MenuListProps {
   menuNames: string[];

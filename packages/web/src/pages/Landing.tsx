@@ -1,4 +1,3 @@
-import useMenu from "../hooks/useMenu";
 import RestaurantDetails from "../components/RestaurantDetails";
 import useRestaurant from "../hooks/useRestaurant";
 import MenuList from "../components/MenuList";

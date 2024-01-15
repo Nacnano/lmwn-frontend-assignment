@@ -22,7 +22,6 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
           </p>
         </div>
       </div>
-      {/* Add more details here */}
     </div>
   );
 };
