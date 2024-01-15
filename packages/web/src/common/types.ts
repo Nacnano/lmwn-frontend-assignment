@@ -29,3 +29,8 @@ export interface Menu {
     }[];
   }[];
 }
+
+export enum MenuType {
+  Short = "short",
+  Full = "full",
+}

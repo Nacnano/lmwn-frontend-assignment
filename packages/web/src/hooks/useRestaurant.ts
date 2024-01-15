@@ -27,7 +27,7 @@ const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
     fetchRestaurantData();
   }, [restaurantId]);
 
-  return { restaurant };
+  return restaurant;
 };
 
 export default useRestaurant;
