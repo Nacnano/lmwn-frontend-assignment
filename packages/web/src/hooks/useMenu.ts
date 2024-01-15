@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import { Menu, MenuType } from "../common/types";
-interface UseMenuDetailsProps {
-  restaurantId: string;
+
+interface UseMenuProps {
   menuName: string;
   type?: MenuType;
 }
 
-const useMenuDetails = ({
-  restaurantId,
+const useMenu = ({
   menuName,
   type = MenuType.Short,
-}: UseMenuDetailsProps): Menu | null => {
+}: UseMenuProps): Menu | null => {
   const [menuDetails, setMenuDetails] = useState<Menu | null>(null);
 
   useEffect(() => {
     const fetchMenuDetails = async () => {
       try {
         const response = await fetch(
-          `${process.env._REACT_APP_API_URL}/restaurants/${restaurantId}/menus/${menuName}/${type}`
+          `${import.meta.env.VITE_API_URL}/restaurants/${import.meta.env.VITE_RESTAURANT_ID}/menus/${menuName}/${type}`
         );
         const data = await response.json();
 
@@ -28,9 +27,9 @@ const useMenuDetails = ({
     };
 
     fetchMenuDetails();
-  }, [restaurantId, menuName]);
+  }, [menuName]);
 
   return menuDetails;
 };
 
-export default useMenuDetails;
+export default useMenu;

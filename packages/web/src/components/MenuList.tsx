@@ -2,19 +2,19 @@ import React from "react";
 import MenuDetails from "./MenuDetails";
 import { Menu } from "../common/types";
 
-interface RestaurantMenuListProps {
-  menus: Menu[];
+interface MenuListProps {
+  menuNames: string[];
 }
 
-const RestaurantMenuList: React.FC<RestaurantMenuListProps> = ({ menus }) => {
+const MenuList: React.FC<MenuListProps> = ({ menuNames }) => {
   return (
     <div>
       <h2>Menu List</h2>
-      {menus.map((menu, index) => (
+      {menuNames.map((menu, index) => (
         <MenuDetails key={index} menu={menu} />
       ))}
     </div>
   );
 };
 
-export default RestaurantMenuList;
+export default MenuList;

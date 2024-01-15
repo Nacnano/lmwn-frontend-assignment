@@ -1,16 +1,11 @@
+import { Restaurant } from "../common/types";
 import React from "react";
 
 interface RestaurantDetailsProps {
-  restaurant: {
-    name: string;
-    coverImage: string;
-    // Add more fields as needed
-  };
+  restaurant: Restaurant;
 }
 
-const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
-  restaurant,
-}) => {
+const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
   return (
     <div>
       <h1>{restaurant.name}</h1>

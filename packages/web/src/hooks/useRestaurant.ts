@@ -3,7 +3,7 @@ import axios from "axios";
 import { Restaurant } from "../common/types";
 
 interface UseRestaurantProps {
-  restaurantId: number;
+  restaurantId: string;
 }
 
 const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
@@ -13,7 +13,7 @@ const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
     const fetchRestaurantData = async () => {
       try {
         const restaurantResponse = await axios.get(
-          `${process.env.REACT_APP_API_URL}/restaurants/${restaurantId}`
+          `${import.meta.env.VITE_API_URL}/restaurants/${restaurantId}`
         );
         setRestaurant(restaurantResponse.data);
       } catch (error) {
