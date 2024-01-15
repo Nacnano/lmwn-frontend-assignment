@@ -23,17 +23,20 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   return (
     <>
       <div
-        className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg hover:bg-gray-50 transition"
+        className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg hover:bg-gray-25 transition"
         onClick={handleOpen}
       >
         {isOutofOrder && (
-          <div className="relative  ">
-            <div className="inset-5 bg-gray-200 text-red-500 font-bold">
-              <p className="text-center">OUT OF ORDER</p>
+          <div className="z-20 relative opacity-80">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-3/4 w-full h-full">
+              <div className="bg-red-200 text-red-500 font-bold text-2xl py-3">
+                <p className="text-center">OUT OF ORDER</p>
+              </div>
             </div>
           </div>
         )}
-        <div className={isOutofOrder ? "opacity-50" : ""}>
+
+        <div className={`z-10 ${isOutofOrder ? "opacity-50" : ""}`}>
           <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
           <p className="text-gray-700">Price: ${menu?.fullPrice}</p>
           {menu?.thumbnailImage && (
@@ -74,7 +77,13 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
             Sold: {menu?.sold} | Total in Stock: {menu?.totalInStock}
           </p>
         </div>
-        <MenuModal isOpen={isModalOpen} onClose={handleClose} menu={menu} />
+
+        <MenuModal
+          isOpen={isModalOpen}
+          onClose={handleClose}
+          setIsModalOpen={setIsModalOpen}
+          menu={menu}
+        />
       </div>
     </>
   );
