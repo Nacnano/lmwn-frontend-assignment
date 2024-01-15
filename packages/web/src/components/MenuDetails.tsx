@@ -23,7 +23,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   return (
     <>
       <div
-        className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg transition hover:scale-110 "
+        className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg hover:bg-gray-50 transition"
         onClick={handleOpen}
       >
         {isOutofOrder && (

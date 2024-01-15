@@ -7,18 +7,18 @@ interface MenuModalProps {
   menu: Menu | null;
 }
 
-const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose, menu }) => {
+const MenuModal = ({ isOpen, onClose, menu }: MenuModalProps) => {
   if (!isOpen || !menu) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center">
+    <div className="fixed w-full h-full inset-0 flex items-center justify-center">
       <div
-        className="absolute inset-0 bg-gray-800 opacity-75"
+        className="absolute z-10 inset-0 bg-gray-800 opacity-75 cursor-pointer"
         onClick={onClose}
       ></div>
-      <div className="bg-white p-6 rounded-md max-w-md">
+      <div className="z-50 bg-white p-6 rounded-md max-w-md">
         <h2 className="text-2xl font-bold mb-4">{menu.name}</h2>
         <p className="text-lg mb-4">Price: ${menu.fullPrice}</p>
         <button
