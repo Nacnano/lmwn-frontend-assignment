@@ -8,7 +8,6 @@ interface MenuDetailsProps {
 
 const MenuDetails: React.FC<MenuDetailsProps> = ({ menuName }) => {
   const menu = useMenu({ menuName }) as Menu;
-  console.log(menu);
   return (
     <div>
       <h2>{menu?.name}</h2>
