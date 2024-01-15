@@ -10,8 +10,8 @@ const MenuList: React.FC<MenuListProps> = ({ menuNames }) => {
   return (
     <div>
       <h2>Menu List</h2>
-      {menuNames.map((menu, index) => (
-        <MenuDetails key={index} menu={menu} />
+      {menuNames.map((menuName, index) => (
+        <MenuDetails key={index} menuName={menuName} />
       ))}
     </div>
   );

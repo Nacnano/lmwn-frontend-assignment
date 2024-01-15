@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, MenuType } from "../common/types";
 
-interface UseMenuProps {
+interface UseMenuDetailsProps {
   menuName: string;
   type?: MenuType;
 }
@@ -9,7 +9,7 @@ interface UseMenuProps {
 const useMenu = ({
   menuName,
   type = MenuType.Short,
-}: UseMenuProps): Menu | null => {
+}: UseMenuDetailsProps): Menu | null => {
   const [menuDetails, setMenuDetails] = useState<Menu | null>(null);
 
   useEffect(() => {

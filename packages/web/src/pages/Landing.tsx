@@ -10,7 +10,7 @@ export default function Landing() {
   return (
     <>
       <div>
-        <h1>Edit this app to complete LINE MAN Wongnai Frontend Assignment!</h1>
+        <h1>LINE MAN Wongnai Frontend Assignment!</h1>
         {restaurant && <RestaurantDetails restaurant={restaurant} />}
         {restaurant?.menus && <MenuList menuNames={restaurant.menus} />}
       </div>
