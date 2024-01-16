@@ -9,21 +9,23 @@ interface MenuDetailsProps {
 
 const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
+  const inStock = menu.totalInStock - menu.sold;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen);
+  const handleModal = () => {
+    if (inStock === 0) return;
+    setIsModalOpen((isModalOpen) => !isModalOpen);
+  };
 
   if (!menu) {
     return null;
   }
 
-  const inStock = menu.totalInStock - menu.sold;
-
   return (
     <>
       <div
-        className={`border p-4 rounded-md shadow-md mb-4  transition 
-        ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50" : "z-0 cursor-default"}`}
+        className={`border p-4 rounded-md mb-4  transition 
+        ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50 shadow-md" : "z-0 cursor-default"}`}
         onClick={handleModal}
       >
         <div className={` ${inStock === 0 ? "opacity-50" : ""}`}>
