@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, MenuType } from "../common/types";
+import { Menu, MenuType, MenuItemOption } from "../common/types";
 import useMenu from "../hooks/useMenu";
 import MenuModal from "./MenuModal";
 
@@ -23,7 +23,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   return (
     <>
       <div
-        className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg hover:bg-gray-25 transition"
+        className={`border p-4 rounded-md shadow-md mb-4 ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-25" : ""} transition`}
         onClick={handleOpen}
       >
         <div className={`z-10 ${inStock === 0 ? "opacity-50" : ""}`}>
@@ -37,21 +37,6 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
               style={{ maxWidth: "100%" }}
             />
           )}
-          {/* {menu?.options && (
-            <div className="mt-2">
-              <h3 className="text-lg font-bold mb-2">Options:</h3>
-              <ul>
-                {menu.options.map((option, index) => (
-                  <li key={index}>
-                    <span className="font-bold">{option.label}:</span>{" "}
-                    {option.choices.map((choice, choiceIndex) => (
-                      <span key={choiceIndex}>{choice.label}</span>
-                    ))}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )} */}
           {menu?.discountedPercent > 0 && (
             <p className="mt-2 text-green-600">
               Discount: {menu?.discountedPercent}% off
@@ -63,13 +48,24 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
               {menu?.discountedTimePeriod.end}
             </p>
           )}
-        </div>
-        <div>
-          {inStock ? (
-            <p className="mt-2 text-gray-600"> {inStock} Left</p>
+
+          <div>
+            {inStock ? (
+              <p className="mt-2 text-gray-600"> {inStock} Left</p>
+            ) : (
+              <div className="bg-red-100 text-red-300 font-bold text-xl py-3 rounded-md">
+                <p className="text-center">OUT OF ORDER</p>
+              </div>
+            )}
+          </div>
+
+          {menu?.options ? (
+            <div>
+              <h3 className="text-lg font-medium my-2">See options...</h3>
+            </div>
           ) : (
-            <div className="bg-red-100 text-red-300 font-bold text-xl py-3 rounded-md">
-              <p className="text-center">OUT OF ORDER</p>
+            <div>
+              <h3 className="text-lg font-medium my-2">No option</h3>
             </div>
           )}
         </div>

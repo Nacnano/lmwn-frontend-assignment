@@ -22,11 +22,13 @@ export interface Menu {
   sold: number;
   totalInStock: number;
   largeImage?: string;
-  options?: {
+  options?: MenuItemOption[];
+}
+
+export interface MenuItemOption {
+  label: string;
+  choices: {
     label: string;
-    choices: {
-      label: string;
-    }[];
   }[];
 }
 
