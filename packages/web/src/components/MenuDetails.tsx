@@ -61,7 +61,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
 
           {menu?.options && (
             <div>
-              <h3 className="text-md font-medium my-2">More options</h3>
+              <h3 className="text-md font-medium my-2">see options</h3>
             </div>
           )}
         </div>

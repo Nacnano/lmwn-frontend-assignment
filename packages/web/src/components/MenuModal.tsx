@@ -15,19 +15,19 @@ const MenuModal: React.FC<MenuModalProps> = ({
   }
 
   return (
-    <div className="fixed w-full h-full inset-0 flex items-center justify-center cursor-default">
+    <div className="fixed w-auto h-auto inset-0 flex items-center justify-center cursor-default">
       <div className="z-30 absolute inset-0 bg-gray-800 opacity-60" />
-      <div className="z-[100] bg-white p-6 rounded-md max-w-md">
-        <h2 className="text-2xl font-bold mb-4">{menu.name}</h2>
-        <p className="text-lg mb-4">Price: ${menu.fullPrice}</p>
-        {menu.thumbnailImage && (
+      <div className="z-[100] bg-white p-6 rounded-md max-w-md shadow-lg">
+        {menu.largeImage && (
           <img
-            src={menu.thumbnailImage}
+            src={menu.largeImage}
             alt={menu.name}
-            className="mb-4 rounded-md"
-            style={{ maxWidth: "100%" }}
+            className="mb-4 rounded-t-md w-full h-40 object-cover"
           />
         )}
+        <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
+        <p className="text-lg mb-4">Price: ${menu.fullPrice}</p>
+
         {menu.discountedPercent > 0 && (
           <p className="text-green-600 mb-4">
             Discount: {menu.discountedPercent}% off
@@ -47,7 +47,9 @@ const MenuModal: React.FC<MenuModalProps> = ({
               <div key={index} className="mb-2">
                 <ul className="list-disc pl-4">
                   {option.choices.map((choice, choiceIndex) => (
-                    <li key={choiceIndex}>{choice.label}</li>
+                    <li key={choiceIndex} className="text-gray-700">
+                      {choice.label}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -55,8 +57,8 @@ const MenuModal: React.FC<MenuModalProps> = ({
           </div>
         )}
 
-        <div className="  ">
-          <a>Press anywhere to close</a>
+        <div className="text-gray-800 opacity-60 text-center mt-4">
+          Press anywhere to close
         </div>
       </div>
     </div>
