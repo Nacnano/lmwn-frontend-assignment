@@ -19,7 +19,8 @@ const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
         <div className="grid grid-cols-2 gap-4">
           <div>
             <h2 className="text-xl font-normal">
-              Open: {restaurant.activeTimePeriod.open} -{" "}
+              Open: {restaurant.activeTimePeriod.open}
+              {" - "}
               {restaurant.activeTimePeriod.close}
             </h2>
           </div>

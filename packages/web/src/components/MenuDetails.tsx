@@ -18,7 +18,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
     return null;
   }
 
-  const isOutofOrder = menu.totalInStock - menu.sold === 0;
+  const inStock = menu.totalInStock - menu.sold;
 
   return (
     <>
@@ -26,17 +26,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
         className="border p-4 rounded-md shadow-md mb-4 hover:cursor-pointer hover:shadow-lg hover:bg-gray-25 transition"
         onClick={handleOpen}
       >
-        {isOutofOrder && (
-          <div className="z-20 relative opacity-80">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-3/4 w-full h-full">
-              <div className="bg-red-200 text-red-500 font-bold text-2xl py-3">
-                <p className="text-center">OUT OF ORDER</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className={`z-10 ${isOutofOrder ? "opacity-50" : ""}`}>
+        <div className={`z-10 ${inStock === 0 ? "opacity-50" : ""}`}>
           <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
           <p className="text-gray-700">Price: ${menu?.fullPrice}</p>
           {menu?.thumbnailImage && (
@@ -73,9 +63,15 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
               {menu?.discountedTimePeriod.end}
             </p>
           )}
-          <p className="mt-2 text-gray-600">
-            Sold: {menu?.sold} | Total in Stock: {menu?.totalInStock}
-          </p>
+        </div>
+        <div>
+          {inStock ? (
+            <p className="mt-2 text-gray-600"> {inStock} Left</p>
+          ) : (
+            <div className="bg-red-100 text-red-300 font-bold text-xl py-3 rounded-md">
+              <p className="text-center">OUT OF ORDER</p>
+            </div>
+          )}
         </div>
 
         <MenuModal
