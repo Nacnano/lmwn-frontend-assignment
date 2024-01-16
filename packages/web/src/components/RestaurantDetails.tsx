@@ -4,9 +4,7 @@ interface RestaurantDetailsProps {
   restaurant: Restaurant;
 }
 
-const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
-  restaurant,
-}) => {
+const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
   return (
     <div>
       <img

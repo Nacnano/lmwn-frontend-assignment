@@ -6,10 +6,7 @@ interface MenuModalProps {
   menu: Menu | null;
 }
 
-const MenuModal: React.FC<MenuModalProps> = ({
-  isOpen,
-  menu,
-}: MenuModalProps) => {
+const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
   if (!isOpen || !menu) {
     return null;
   }

@@ -5,7 +5,7 @@ interface MenuListProps {
   menuNames: string[];
 }
 
-const MenuList: React.FC<MenuListProps> = ({ menuNames }) => {
+const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <>
       <div className="px-4">
