@@ -11,8 +11,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpen = () => setIsModalOpen(true);
-  const handleClose = () => setIsModalOpen(false);
+  const handleModal = () => setIsModalOpen((isModalOpen) => !isModalOpen);
 
   if (!menu) {
     return null;
@@ -23,8 +22,9 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   return (
     <>
       <div
-        className={`border p-4 rounded-md shadow-md mb-4 ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-25" : ""} transition`}
-        onClick={handleOpen}
+        className={`border p-4 rounded-md shadow-md mb-4  transition 
+        ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50" : "cursor-default"}`}
+        onClick={handleModal}
       >
         <div className={`z-10 ${inStock === 0 ? "opacity-50" : ""}`}>
           <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
@@ -59,23 +59,14 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
             )}
           </div>
 
-          {menu?.options ? (
+          {menu?.options && (
             <div>
-              <h3 className="text-lg font-medium my-2">See options...</h3>
-            </div>
-          ) : (
-            <div>
-              <h3 className="text-lg font-medium my-2">No option</h3>
+              <h3 className="text-md font-medium my-2">More options</h3>
             </div>
           )}
         </div>
 
-        <MenuModal
-          isOpen={isModalOpen}
-          onClose={handleClose}
-          setIsModalOpen={setIsModalOpen}
-          menu={menu}
-        />
+        <MenuModal isOpen={isModalOpen} menu={menu} />
       </div>
     </>
   );
