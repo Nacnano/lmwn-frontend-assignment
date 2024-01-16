@@ -12,9 +12,9 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
   }
 
   return (
-    <div className="z-20 fixed w-auto h-auto inset-0 flex items-center justify-center cursor-default">
+    <div className="z-20 fixed w-full h-full inset-0 flex items-center justify-center cursor-default">
       <div className="z-30 absolute inset-0 bg-gray-800 opacity-60" />
-      <div className="z-50 bg-white rounded-md w-4/5 lg:w-1/3 overflow-y-auto h-auto max-h-5/6">
+      <div className="z-50 bg-white rounded-md w-4/5 lg:w-1/3 overflow-y-auto h-5/6">
         {menu.largeImage && (
           <img
             src={menu.largeImage}
