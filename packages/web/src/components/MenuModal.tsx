@@ -14,15 +14,14 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
   return (
     <div className="z-20 fixed w-auto h-auto inset-0 flex items-center justify-center cursor-default">
       <div className="z-30 absolute inset-0 bg-gray-800 opacity-60" />
-      <div className="z-50 bg-white rounded-md max-w-md overflow-y-auto max-h-full">
+      <div className="z-50 bg-white rounded-md w-4/5 lg:w-1/3 overflow-y-auto h-auto max-h-5/6">
         {menu.largeImage && (
           <img
             src={menu.largeImage}
             alt={menu.name}
-            className="mb-4 rounded-t-md w-full h-40 object-cover sm:h-64"
+            className="mb-4 rounded-t-md w-full h-96 object-cover"
           />
         )}
-
         <div className="px-4">
           <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
           <p className="text-lg mb-4">{menu.fullPrice}฿</p>
@@ -65,7 +64,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
             <h3 className="text-xl font-semibold mb-2"> No option</h3>
           )}
 
-          <div className="text-gray-800 opacity-60 text-center mt-4">
+          <div className="text-gray-800 opacity-60 text-center my-4">
             Press anywhere to close
           </div>
         </div>

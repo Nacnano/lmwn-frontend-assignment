@@ -8,18 +8,18 @@ interface MenuDetailsProps {
 }
 
 const MenuDetails = ({ menuName }: MenuDetailsProps) => {
-  const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
-  const inStock = menu.totalInStock - menu.sold;
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
+  if (!menu) {
+    return null;
+  }
+
+  const inStock = menu.totalInStock - menu.sold;
   const handleModal = () => {
     if (inStock === 0) return;
     setIsModalOpen((isModalOpen) => !isModalOpen);
   };
-
-  if (!menu) {
-    return null;
-  }
 
   return (
     <>
