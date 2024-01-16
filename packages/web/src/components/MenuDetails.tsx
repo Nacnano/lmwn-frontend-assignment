@@ -23,12 +23,12 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
     <>
       <div
         className={`border p-4 rounded-md shadow-md mb-4  transition 
-        ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50" : "cursor-default"}`}
+        ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50" : "z-0 cursor-default"}`}
         onClick={handleModal}
       >
-        <div className={`z-10 ${inStock === 0 ? "opacity-50" : ""}`}>
+        <div className={` ${inStock === 0 ? "opacity-50" : ""}`}>
           <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
-          <p className="text-gray-700">Price: ${menu?.fullPrice}</p>
+          <p className="text-gray-700">{menu?.fullPrice}฿</p>
           {menu?.thumbnailImage && (
             <img
               src={menu?.thumbnailImage}
@@ -42,11 +42,18 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
               Discount: {menu?.discountedPercent}% off
             </p>
           )}
+
           {menu?.discountedTimePeriod && (
             <p className="text-gray-600">
               Discount valid from {menu?.discountedTimePeriod.begin} to{" "}
               {menu?.discountedTimePeriod.end}
             </p>
+          )}
+
+          {menu?.options && (
+            <div>
+              <h3 className="text-md font-medium my-2">See Options</h3>
+            </div>
           )}
 
           <div>
@@ -58,12 +65,6 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
               </div>
             )}
           </div>
-
-          {menu?.options && (
-            <div>
-              <h3 className="text-md font-medium my-2">see options</h3>
-            </div>
-          )}
         </div>
 
         <MenuModal isOpen={isModalOpen} menu={menu} />
