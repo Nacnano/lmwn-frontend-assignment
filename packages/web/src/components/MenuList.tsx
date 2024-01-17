@@ -6,13 +6,13 @@ interface MenuListProps {
 }
 
 const MenuList = ({ menuNames }: MenuListProps) => {
-  const [visibleMenuCount, setVisibleMenuCount] = useState(6);
+  const [visibleMenuCount, setVisibleMenuCount] = useState(9);
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setVisibleMenuCount((prevCount) => prevCount + 3);
+          setVisibleMenuCount((prevCount) => prevCount + 6);
         }
       },
       { threshold: 0.5 }
@@ -30,7 +30,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   }, [containerRef]);
 
   return (
-    <div className="px-4">
+    <div className="w-full px-4">
       <div
         ref={containerRef}
         className="mt-4 pt-8 px-4 border-t-2 border-gray-300"
