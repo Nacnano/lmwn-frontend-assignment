@@ -18,7 +18,9 @@ const MenuList = ({ menuNames }: MenuListProps) => {
     .map((menuName) => useMenu({ menuName, type: MenuType.Full }) as Menu)
     .filter(
       (menu) =>
-        menu && menu.name.toLowerCase().includes(searchTerm.toLowerCase())
+        menu &&
+        menu.name &&
+        menu.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
   const handleSearchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +82,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             <MoonLoader size={40} />
           </div>
         ) : (
-          <h3 className="font-medium text-2xl text-center py-5">
+          <h3 className="font-medium text-2xl text-center pt-10 pb-5">
             End of the Menu
           </h3>
         )}
