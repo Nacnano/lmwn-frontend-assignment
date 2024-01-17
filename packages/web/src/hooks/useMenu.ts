@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, MenuType } from "../common/types";
+import { useParams } from "react-router";
 
 interface UseMenuDetailsProps {
   menuName: string;
@@ -12,11 +13,13 @@ const useMenu = ({
 }: UseMenuDetailsProps): Menu | null => {
   const [menuDetails, setMenuDetails] = useState<Menu | null>(null);
 
+  const { restaurantId } = useParams();
+
   useEffect(() => {
     const fetchMenuDetails = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/restaurants/${import.meta.env.VITE_RESTAURANT_ID}/menus/${menuName}/${type}`
+          `${import.meta.env.VITE_API_URL}/restaurants/${restaurantId}/menus/${menuName}/${type}`
         );
         const data = await response.json();
 

@@ -5,8 +5,7 @@ import MenuList from "../components/MenuList";
 import { Restaurant } from "../common/types";
 
 export default function Landing() {
-  const restaurantId = import.meta.env.VITE_RESTAURANT_ID || "227018";
-  const restaurant = useRestaurant({ restaurantId }) as Restaurant;
+  const restaurant = useRestaurant() as Restaurant;
 
   return (
     <>

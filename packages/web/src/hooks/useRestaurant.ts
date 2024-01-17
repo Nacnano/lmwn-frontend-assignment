@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Restaurant } from "../common/types";
+import { useParams } from "react-router";
 
-interface UseRestaurantProps {
-  restaurantId: string;
-}
-
-const useRestaurant = ({ restaurantId }: UseRestaurantProps) => {
+const useRestaurant = () => {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+
+  const { restaurantId } = useParams();
 
   useEffect(() => {
     const fetchRestaurantData = async () => {

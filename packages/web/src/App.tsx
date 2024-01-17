@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path=":restaurantId" element={<Landing />} />
       </Routes>
     </BrowserRouter>
   );
