@@ -22,13 +22,13 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
             className="mb-4 rounded-t-md w-full h-2/5 object-cover"
           />
         )}
-        <div className="w-full h-full p-4 flex flex-col justify-between items-start">
+        <div className="p-4 flex flex-col justify-between items-start gap-2">
           <div>
             <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
             <MenuPrice menu={menu} />
 
             {menu.options && menu.options.length > 0 ? (
-              <div>
+              <div className="mt-2">
                 <h3 className="text-xl font-semibold mb-2">Options:</h3>
                 <div className="mb-2">
                   <div className="list-disc pl-4">
