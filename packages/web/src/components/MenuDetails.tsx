@@ -44,7 +44,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
                 />
               </div>
             ) : (
-              <div className="bg-gray-100 rounded-md w-full h-40 flex justify-center items-center">
+              <div className="mb-4 bg-gray-100 rounded-md w-full h-40 flex justify-center items-center">
                 No Image
               </div>
             )}
