@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, MenuType, MenuItemOption } from "../common/types";
 import useMenu from "../hooks/useMenu";
 import MenuModal from "./MenuModal";
+import LoadingMenuDetails from "./LoadingMenuDetails";
 
 interface MenuDetailsProps {
   menuName: string;
@@ -9,10 +10,18 @@ interface MenuDetailsProps {
 
 const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
+
+  useEffect(() => {
+    if (menu) {
+      setIsLoading(false);
+    }
+  }, [menu]);
+
   if (!menu) {
-    return null;
+    return <LoadingMenuDetails />;
   }
 
   const inStock = menu.totalInStock - menu.sold;
@@ -82,6 +91,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
             </div>
           </div>
         </div>
+
         <MenuModal isOpen={isModalOpen} menu={menu} />
       </div>
     </>
