@@ -28,25 +28,30 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
         ${inStock ? "hover:cursor-pointer hover:shadow-lg hover:bg-gray-50 shadow-md" : "z-0 cursor-default"}`}
         onClick={handleModal}
       >
-        <div className={`w-full h-full ${inStock === 0 ? "opacity-50" : ""}`}>
-          {menu?.largeImage ? (
-            <div>
-              <img
-                src={menu?.largeImage}
-                alt={menu?.name}
-                className="mb-4 rounded-t-md w-full h-40 object-cover"
-                style={{ maxWidth: "100%" }}
-              />
+        <div
+          className={`flex flex-col justify-between w-full h-full ${inStock === 0 ? "opacity-50" : ""}`}
+        >
+          <div>
+            {menu?.largeImage ? (
+              <div>
+                <img
+                  src={menu?.largeImage}
+                  alt={menu?.name}
+                  className="mb-4 rounded-t-md w-full h-40 object-cover"
+                  style={{ maxWidth: "100%" }}
+                />
+              </div>
+            ) : (
+              <div className="bg-gray-100 rounded-md w-full h-40 flex justify-center items-center">
+                No Image
+              </div>
+            )}
+            <div className="px-4">
+              <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
             </div>
-          ) : (
-            <div className="bg-gray-100 rounded-md w-full h-40 flex justify-center items-center">
-              No Image
-            </div>
-          )}
+          </div>
 
           <div className="px-4 flex flex-col justify-between h-auto">
-            <h2 className="text-xl font-bold mb-2">{menu?.name}</h2>
-
             {menu?.discountedPercent > 0 && (
               <p className="mt-2 text-green-600">
                 Discount: {menu?.discountedPercent}% off
@@ -61,7 +66,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
             )}
 
             <div className="my-2 flex justify-between">
-              <p className="text-gray-800 text-left text-xl">
+              <p className="text-gray-700 text-left text-xl">
                 {menu?.fullPrice}฿
               </p>
 
