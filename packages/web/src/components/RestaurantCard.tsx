@@ -10,7 +10,12 @@ const RestaurantCard = ({ id }: RestaurantCardProps) => {
   const restaurant = useRestaurant(id) as Restaurant;
 
   if (!restaurant) {
-    return null;
+    return (
+      <div className="border p-4 rounded-md animate-pulse">
+        <div className="mb-4 rounded-md w-full h-32 bg-gray-200 object-cover" />
+        <h2 className="rounded-lg w-1/3 h-8 bg-gray-200" />
+      </div>
+    );
   }
 
   const { name, coverImage } = restaurant;

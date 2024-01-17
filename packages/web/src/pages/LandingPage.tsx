@@ -1,9 +1,7 @@
-// LandingPage.js
-
 import RestaurantCard from "../components/RestaurantCard";
 import { restaurantList } from "../data/restaurantList";
 
-const LandingPage = () => {
+export default function LandingPage() {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="w-full md:w-2/3 bg-white shadow-md rounded-md p-8">
@@ -18,6 +16,4 @@ const LandingPage = () => {
       </div>
     </div>
   );
-};
-
-export default LandingPage;
+}
