@@ -9,6 +9,8 @@ interface MenuListProps {
 }
 
 const MenuList = ({ menuNames }: MenuListProps) => {
+  // TODO: Add more filter options (discount, price, etc.)
+  // TODO: Add popular menu section
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const containerRef = useRef<HTMLDivElement>(null);
