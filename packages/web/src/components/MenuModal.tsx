@@ -19,7 +19,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
           <img
             src={menu.largeImage}
             alt={menu.name}
-            className="mb-4 rounded-t-md w-full h-96 object-cover"
+            className="mb-4 rounded-t-md w-full h-2/5 object-cover"
           />
         )}
         <div className="p-4">
