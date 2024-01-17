@@ -29,15 +29,15 @@ const MenuPrice = ({ menu }: MenuPriceProps) => {
 
   return (
     <>
-      <p className="text-gray-700 text-left text-xl">
+      <p className="text-gray-700 text-left ">
         {menu.fullPrice === finalPrice ? (
-          <span>{menu.fullPrice}฿</span>
+          <span className="text-xl">{menu.fullPrice}฿</span>
         ) : (
-          <div>
-            <span className="line-through text-gray-400">
+          <div className="flex gap-2 items-baseline">
+            <span className="text-green-600 text-2xl">{finalPrice}฿</span>
+            <span className="line-through text-gray-400 text-xl">
               {menu.fullPrice}฿
             </span>
-            <span className="text-green-600">{finalPrice}฿</span>
           </div>
         )}
       </p>

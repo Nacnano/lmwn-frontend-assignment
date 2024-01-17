@@ -1,5 +1,5 @@
-import React from "react";
 import { Menu, MenuItemOption } from "../common/types";
+import MenuPrice from "./MenuPrice";
 
 interface MenuModalProps {
   isOpen: boolean;
@@ -25,19 +25,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
         <div className="w-full h-full p-4 flex flex-col justify-between items-start">
           <div>
             <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
-            <p className="text-lg mb-4">{menu.fullPrice}฿</p>
-
-            {menu.discountedPercent > 0 && (
-              <p className="text-green-600 mb-4">
-                Discount: {menu.discountedPercent}% off
-              </p>
-            )}
-            {menu.discountedTimePeriod && (
-              <p className="text-gray-600 mb-4">
-                Discount valid from {menu.discountedTimePeriod.begin} to{" "}
-                {menu.discountedTimePeriod.end}
-              </p>
-            )}
+            <MenuPrice menu={menu} />
 
             {menu.options && menu.options.length > 0 ? (
               <div>

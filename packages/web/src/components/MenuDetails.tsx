@@ -54,15 +54,15 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
           </div>
 
           <div className="px-4 flex flex-col justify-between h-auto">
-            <div className="my-2 flex justify-between">
+            <div className="my-2 flex justify-between items-baseline">
               <MenuPrice menu={menu} />
 
               {inStock ? (
-                <p className="text-gray-600 text-right text-xl">
+                <p className="text-gray-500 text-right text-lg">
                   {inStock} Left
                 </p>
               ) : (
-                <div className="bg-red-100 text-red-300 font-semibold text-xs px-2 py-1 rounded-md w-1/2 flex items-center justify-center">
+                <div className="bg-red-100 text-red-300 font-semibold text-sm px-2 py-1 rounded-md w-1/2 flex items-center justify-center">
                   <p className="text-center">OUT OF ORDER</p>
                 </div>
               )}
