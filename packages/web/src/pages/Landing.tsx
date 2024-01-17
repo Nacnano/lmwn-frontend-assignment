@@ -15,7 +15,7 @@ export default function Landing() {
           {restaurant ? (
             <RestaurantDetails restaurant={restaurant} />
           ) : (
-            <MoonLoader className="" size={50} />
+            <MoonLoader size={50} />
           )}
           {restaurant?.menus && <MenuList menuNames={restaurant.menus} />}
         </div>
