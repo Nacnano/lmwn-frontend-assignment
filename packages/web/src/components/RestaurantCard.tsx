@@ -21,7 +21,10 @@ const RestaurantCard = ({ id }: RestaurantCardProps) => {
   const { name, coverImage } = restaurant;
 
   return (
-    <Link to={`/${id}`} className="border p-4 rounded-md hover:bg-gray-200">
+    <Link
+      to={`/${id}`}
+      className="border p-4 rounded-md hover:bg-gray-200 shadow-md hover:shadow-lg transition"
+    >
       {coverImage ? (
         <img
           src={coverImage}
