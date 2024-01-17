@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import MenuDetails from "./MenuDetails";
 import { MoonLoader } from "react-spinners";
+import useMenu from "../hooks/useMenu";
+import { Menu, MenuType } from "../common/types";
 
 interface MenuListProps {
   menuNames: string[];
 }
 
 const MenuList = ({ menuNames }: MenuListProps) => {
+  const menus = menuNames.map((menuName) => {
+    return useMenu({ menuName, type: MenuType.Full }) as Menu;
+  });
+
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,8 +42,8 @@ const MenuList = ({ menuNames }: MenuListProps) => {
         <h2 className="text-2xl font-bold mb-4">Menu List</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {menuNames.slice(0, visibleMenuCount).map((menuName, index) => (
-            <MenuDetails key={index} menuName={menuName} />
+          {menus.slice(0, visibleMenuCount).map((menu, index) => (
+            <MenuDetails key={index} menu={menu} />
           ))}
         </div>
 

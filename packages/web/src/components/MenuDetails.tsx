@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { Menu, MenuType } from "../common/types";
-import useMenu from "../hooks/useMenu";
 import MenuModal from "./MenuModal";
 import LoadingMenuDetails from "./LoadingMenuDetails";
 import MenuPrice from "./MenuPrice";
 
 interface MenuDetailsProps {
-  menuName: string;
+  menu: Menu;
 }
 
-const MenuDetails = ({ menuName }: MenuDetailsProps) => {
+const MenuDetails = ({ menu }: MenuDetailsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
 
   if (!menu) {
     return <LoadingMenuDetails />;
