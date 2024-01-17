@@ -13,7 +13,8 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const filteredMenus = [...new Set(menuNames)]
+  menuNames = [...new Set(menuNames)];
+  const filteredMenus = menuNames
     .map((menuName) => useMenu({ menuName, type: MenuType.Full }) as Menu)
     .filter(
       (menu) =>
@@ -25,19 +26,19 @@ const MenuList = ({ menuNames }: MenuListProps) => {
     setSearchTerm(e.target.value);
   };
 
-  console.log("visibleMenuCount", visibleMenuCount);
-  console.log("filteredMenus", filteredMenus);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setVisibleMenuCount((prevCount) => prevCount + 12);
-      }
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleMenuCount((prevCount) => prevCount + 12);
+        }
+      },
+      { threshold: 1 }
+    );
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
-
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
@@ -67,7 +68,11 @@ const MenuList = ({ menuNames }: MenuListProps) => {
           ))}
         </div>
 
-        {visibleMenuCount < filteredMenus.length ? (
+        {searchTerm && filteredMenus.length === 0 ? (
+          <h3 className="font-medium text-2xl text-center py-5">
+            No menu found
+          </h3>
+        ) : visibleMenuCount < menuNames.length ? (
           <div
             className="pt-5 pb-40 flex items-center justify-center"
             ref={containerRef}
