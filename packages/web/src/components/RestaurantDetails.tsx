@@ -6,7 +6,7 @@ interface RestaurantDetailsProps {
 
 const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
   return (
-    <div>
+    <div className="w-full">
       <img
         src={restaurant.coverImage}
         alt={restaurant.name}

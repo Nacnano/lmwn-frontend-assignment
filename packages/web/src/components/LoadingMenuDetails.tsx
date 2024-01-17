@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const LoadingMenuDetails: React.FC = () => {
+const LoadingMenuDetails = () => {
   return (
     <div className={`border rounded-md mb-4 transition shadow-md`}>
       <div
