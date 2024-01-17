@@ -3,10 +3,12 @@ import axios from "axios";
 import { Restaurant } from "../common/types";
 import { useParams } from "react-router";
 
-const useRestaurant = () => {
+const useRestaurant = (restaurantId?: string) => {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
 
-  const { restaurantId } = useParams();
+  if (!restaurantId) {
+    restaurantId = useParams().restaurantId;
+  }
 
   useEffect(() => {
     const fetchRestaurantData = async () => {
