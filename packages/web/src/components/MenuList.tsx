@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import MenuDetails from "./MenuDetails";
+import MenuDetails from "./MenuCard";
 import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";

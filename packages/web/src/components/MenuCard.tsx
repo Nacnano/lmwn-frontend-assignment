@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Menu, MenuType } from "../common/types";
+import { Menu } from "../common/types";
 import MenuModal from "./MenuModal";
-import LoadingMenuDetails from "./LoadingMenuDetails";
+import LoadingMenuDetails from "./LoadingMenuCard";
 import MenuPrice from "./MenuPrice";
 
-interface MenuDetailsProps {
+interface MenuCardProps {
   menu: Menu;
 }
 
-const MenuDetails = ({ menu }: MenuDetailsProps) => {
+const MenuCard = ({ menu }: MenuCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!menu) {
@@ -74,4 +74,4 @@ const MenuDetails = ({ menu }: MenuDetailsProps) => {
   );
 };
 
-export default MenuDetails;
+export default MenuCard;

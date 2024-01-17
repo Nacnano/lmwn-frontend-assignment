@@ -1,8 +1,4 @@
-// LoadingMenuDetails.tsx
-
-import React from "react";
-
-const LoadingMenuDetails = () => {
+const LoadingMenuCard = () => {
   return (
     <div className={`border rounded-md mb-4 transition shadow-md`}>
       <div
@@ -26,4 +22,4 @@ const LoadingMenuDetails = () => {
   );
 };
 
-export default LoadingMenuDetails;
+export default LoadingMenuCard;
