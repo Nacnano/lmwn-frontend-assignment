@@ -14,23 +14,23 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
   return (
     <div className="z-20 fixed w-full h-full inset-0 flex items-center justify-center cursor-default">
       <div className="z-30 absolute inset-0 bg-gray-800 opacity-60" />
-      <div className="z-50 bg-white rounded-md w-4/5 lg:w-1/3 overflow-y-auto h-5/6">
+      <div className="z-50 bg-white rounded-md w-4/5 lg:w-1/3 h-5/6">
         {menu.largeImage && (
           <img
             src={menu.largeImage}
             alt={menu.name}
-            className="mb-4 rounded-t-md w-full h-2/5 object-cover"
+            className="rounded-t-md w-full h-1/4 object-cover"
           />
         )}
-        <div className="p-4 flex flex-col justify-between items-start gap-2">
-          <div>
+        <div className="p-4 flex flex-col justify-around items-start gap-2 h-3/4">
+          <div className="w-full h-5/6">
             <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
             <MenuPrice menu={menu} />
 
             {menu.options && menu.options.length > 0 ? (
-              <div className="mt-2">
+              <div className="h-2/3 mt-2">
                 <h3 className="text-xl font-semibold mb-2">Options:</h3>
-                <div className="mb-2">
+                <div className="mb-2 h-full overflow-y-auto">
                   <div className="list-disc pl-4">
                     {menu.options.map(
                       (option: MenuItemOption, index: number) => (
@@ -52,7 +52,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
                 </div>
               </div>
             ) : (
-              <h3 className="text-xl font-semibold mb-2"> No option</h3>
+              <h3 className="text-xl font-medium my-2"> No option</h3>
             )}
           </div>
 
