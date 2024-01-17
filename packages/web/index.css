@@ -5,3 +5,21 @@
 body {
   font-family: "Prompt", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: lightgray;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: darkgray;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
