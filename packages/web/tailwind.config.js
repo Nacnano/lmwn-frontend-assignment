@@ -1,4 +1,3 @@
-// tailwind.config.js
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
@@ -10,5 +9,5 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [require('tailwind-scrollbar-hide')]
 }

@@ -7,7 +7,7 @@ import { Restaurant } from "../common/types";
 export default function Landing() {
   const restaurantId = import.meta.env.VITE_RESTAURANT_ID || "227018";
   const restaurant = useRestaurant({ restaurantId }) as Restaurant;
-  // const restaurant = null;
+
   return (
     <>
       <div className="bg-gray-100 min-h-screen flex items-center justify-center">
