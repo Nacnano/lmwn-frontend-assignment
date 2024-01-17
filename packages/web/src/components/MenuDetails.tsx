@@ -31,7 +31,7 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
         onClick={handleModal}
       >
         <div
-          className={`flex flex-col justify-between w-full h-full ${inStock === 0 ? "opacity-50" : ""}`}
+          className={`flex flex-col justify-between w-full h-full ${inStock === 0 ? "opacity-40" : ""}`}
         >
           <div>
             {menu.largeImage ? (
