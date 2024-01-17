@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MenuDetails from "./MenuDetails";
 import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
@@ -9,21 +9,30 @@ interface MenuListProps {
 }
 
 const MenuList = ({ menuNames }: MenuListProps) => {
-  const menus = menuNames.map((menuName) => {
-    return useMenu({ menuName, type: MenuType.Full }) as Menu;
-  });
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const containerRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleMenuCount((prevCount) => prevCount + 12);
-        }
-      },
-      { threshold: 1 }
+
+  const filteredMenus = [...new Set(menuNames)]
+    .map((menuName) => useMenu({ menuName, type: MenuType.Full }) as Menu)
+    .filter(
+      (menu) =>
+        menu && menu.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+  const handleSearchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVisibleMenuCount(12);
+    setSearchTerm(e.target.value);
+  };
+
+  console.log("visibleMenuCount", visibleMenuCount);
+  console.log("filteredMenus", filteredMenus);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setVisibleMenuCount((prevCount) => prevCount + 12);
+      }
+    });
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
@@ -39,18 +48,29 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
+        <div className="flex items-center mb-4">
+          <input
+            type="text"
+            placeholder="Search menu..."
+            value={searchTerm}
+            onChange={(e) => {
+              handleSearchBarChange(e);
+            }}
+            className="border border-gray-400 p-2 w-full rounded-md"
+          />
+        </div>
         <h2 className="text-2xl font-bold mb-4">Menu List</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {menus.slice(0, visibleMenuCount).map((menu, index) => (
+          {filteredMenus.slice(0, visibleMenuCount).map((menu, index) => (
             <MenuDetails key={index} menu={menu} />
           ))}
         </div>
 
-        {visibleMenuCount < menuNames.length ? (
+        {visibleMenuCount < filteredMenus.length ? (
           <div
-            ref={containerRef}
             className="pt-5 pb-40 flex items-center justify-center"
+            ref={containerRef}
           >
             <MoonLoader size={40} />
           </div>
