@@ -10,13 +10,11 @@ interface MenuDetailsProps {
 
 const MenuDetails = ({ menuName }: MenuDetailsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const menu = useMenu({ menuName, type: MenuType.Full }) as Menu;
 
   useEffect(() => {
     if (menu) {
-      setIsLoading(false);
     }
   }, [menu]);
 

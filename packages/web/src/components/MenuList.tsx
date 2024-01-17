@@ -8,6 +8,7 @@ interface MenuListProps {
 const MenuList = ({ menuNames }: MenuListProps) => {
   const [visibleMenuCount, setVisibleMenuCount] = useState(9);
   const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
