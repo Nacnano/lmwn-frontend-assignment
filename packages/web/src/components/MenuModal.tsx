@@ -19,16 +19,16 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
           <img
             src={menu.largeImage}
             alt={menu.name}
-            className="rounded-t-md w-full h-1/4 object-cover"
+            className="rounded-t-md w-full h-1/5 md:h-1/4 object-cover"
           />
         )}
-        <div className="p-4 flex flex-col justify-around items-start gap-2 h-3/4">
-          <div className="w-full h-5/6">
+        <div className="p-4 flex flex-col justify-around items-start gap-2 h-4/5 md:h-3/4">
+          <div className="w-full h-5/6 overflow-y-auto scrollbar-hide">
             <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
             <MenuPrice menu={menu} />
 
             {menu.options && menu.options.length > 0 ? (
-              <div className="h-1/2 md:h-3/5 mt-2">
+              <div className="h-2/3 md:h-3/5 mt-2">
                 <h3 className="text-xl font-semibold mb-2">Options:</h3>
                 <div className="mb-2 h-full overflow-y-auto bg-gray-50 rounded-md p-1">
                   <div className="list-disc pl-4">
