@@ -69,8 +69,8 @@ const MenuDetails = ({ menuName }: MenuDetailsProps) => {
 
             {menu?.discountedTimePeriod && (
               <p className="text-gray-600">
-                Discount valid from {menu?.discountedTimePeriod.begin} to{" "}
-                {menu?.discountedTimePeriod.end}
+                Discount valid from {menu?.discountedTimePeriod?.begin} to{" "}
+                {menu?.discountedTimePeriod?.end}
               </p>
             )}
 
