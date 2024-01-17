@@ -30,7 +30,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
             {menu.options && menu.options.length > 0 ? (
               <div className="h-1/2 md:h-3/5 mt-2">
                 <h3 className="text-xl font-semibold mb-2">Options:</h3>
-                <div className="mb-2 h-full overflow-y-auto">
+                <div className="mb-2 h-full overflow-y-auto bg-gray-50 rounded-md p-1">
                   <div className="list-disc pl-4">
                     {menu.options.map(
                       (option: MenuItemOption, index: number) => (
