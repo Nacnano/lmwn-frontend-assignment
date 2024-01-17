@@ -9,7 +9,7 @@ export default function Landing() {
   return (
     <>
       <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-        <div className="max-w-3xl bg-white shadow-md rounded-md">
+        <div className="w-full md:w-2/3 bg-white shadow-md rounded-md">
           {restaurant && <RestaurantDetails restaurant={restaurant} />}
           {restaurant?.menus && <MenuList menuNames={restaurant.menus} />}
         </div>

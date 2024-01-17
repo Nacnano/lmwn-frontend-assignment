@@ -14,15 +14,11 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
       />
       <div className="max-w-3xl mx-4 py-4 bg-white rounded">
         <h1 className="text-3xl font-bold mb-4">{restaurant.name}</h1>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <h2 className="text-xl font-normal">
-              Open: {restaurant.activeTimePeriod.open}
-              {" - "}
-              {restaurant.activeTimePeriod.close}
-            </h2>
-          </div>
-        </div>
+        <h2 className="text-xl font-normal">
+          Open: {restaurant.activeTimePeriod.open}
+          {" - "}
+          {restaurant.activeTimePeriod.close}
+        </h2>
       </div>
     </div>
   );
