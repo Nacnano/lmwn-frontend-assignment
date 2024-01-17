@@ -4,7 +4,7 @@ import useRestaurant from "../hooks/useRestaurant";
 import MenuList from "../components/MenuList";
 import { Restaurant } from "../common/types";
 
-export default function Landing() {
+export default function RestaurantPage() {
   const restaurant = useRestaurant() as Restaurant;
 
   return (
