@@ -6,7 +6,7 @@ const ScrollToTopButton = () => {
   const handleScroll = () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
-    setIsVisible(scrollTop > 300);
+    setIsVisible(scrollTop > 500);
   };
 
   const scrollToTop = () => {
