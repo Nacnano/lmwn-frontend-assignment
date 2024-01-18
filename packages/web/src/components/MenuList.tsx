@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import MenuDetails from "./MenuCard";
+import MenuCard from "./MenuCard";
 import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import RangeSlider from "./RangeSlider";
 import usePopularMenus from "../hooks/usePopularMenus";
 import { debounce } from "lodash";
+import PopularMenusList from "./PopularMenusList";
 
 const defaultPriceRange = [0, 500];
 
@@ -71,20 +72,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <h2 id="popular-menus" className="text-3xl font-bold mb-4">
-          Popular Menus
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {popularMenus &&
-            popularMenus.map((menu, index) => (
-              <MenuDetails key={index} menu={menu} />
-            ))}
-        </div>
-        {!popularMenus && (
-          <div className="pt-5 pb-20 flex w-full items-center justify-center">
-            <MoonLoader size={40} />
-          </div>
-        )}
+        <PopularMenusList popularMenus={popularMenus} />
 
         <hr className="my-6 border-gray-400" />
 
@@ -115,7 +103,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredMenus.slice(0, visibleMenuCount).map((menu, index) => (
-            <MenuDetails key={index} menu={menu} />
+            <MenuCard key={index} menu={menu} />
           ))}
         </div>
 
