@@ -14,7 +14,7 @@ export default function RestaurantPage() {
   return (
     <>
       <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center relative">
-        <div className="lg:w-3/4 min-h-screen bg-white shadow-md rounded-md flex flex-col items-center justify-center">
+        <div className="w-full  min-h-screen bg-white shadow-md rounded-md flex flex-col items-center justify-center">
           {restaurant ? (
             <>
               <RestaurantDetails restaurant={restaurant} />
@@ -25,22 +25,20 @@ export default function RestaurantPage() {
           )}
         </div>
 
-        <div className="lg:w-1/4 lg:fixed lg:top-4 lg:right-4 lg:shadow-none">
-          <div className="hidden lg:flex flex-col items-end gap-2 p-4 lg:p-0">
-            {sidebarList.map((item, index) => (
-              <CustomLink
-                key={index}
-                to={item.path}
-                className="bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-lg font-medium
-                px-4 py-2 rounded-full transition border-2 border-gray-300 shadow-sm hover:shadow-md"
-              >
-                {item.text}
-              </CustomLink>
-            ))}
-          </div>
+        <div className="w-auto flex items-end gap-2 lg:p-4 fixed top-4 right-4 shadow-none">
+          {sidebarList.map((item, index) => (
+            <CustomLink
+              key={index}
+              to={item.path}
+              className="bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-lg font-medium
+              px-4 py-2 rounded-full transition border-2 border-gray-300 shadow-sm hover:shadow-md opacity-90"
+            >
+              {item.text}
+            </CustomLink>
+          ))}
         </div>
 
-        <MobileSidebar />
+        {/* <MobileSidebar /> */}
 
         <ScrollToTopButton />
       </div>
