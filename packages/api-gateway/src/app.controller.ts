@@ -5,13 +5,13 @@ import { Menu } from './entities/menu.entity';
 
 @Controller()
 export class AppController {
-  constructor(private readonly apiService: AppService) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get('restaurants/:restaurantId')
   async getRestaurant(
     @Param('restaurantId') restaurantId: string,
   ): Promise<Restaurant> {
-    return this.apiService.getRestaurant(restaurantId);
+    return this.appService.getRestaurant(restaurantId);
   }
 
   @Get('restaurants/:restaurantId/menus/:menuName/short')
@@ -19,7 +19,7 @@ export class AppController {
     @Param('restaurantId') restaurantId: string,
     @Param('menuName') menuName: string,
   ): Promise<Menu> {
-    return this.apiService.getShortMenu(restaurantId, menuName);
+    return this.appService.getShortMenu(restaurantId, menuName);
   }
 
   @Get('restaurants/:restaurantId/menus/:menuName/full')
@@ -27,6 +27,13 @@ export class AppController {
     @Param('restaurantId') restaurantId: string,
     @Param('menuName') menuName: string,
   ): Promise<Menu> {
-    return this.apiService.getFullMenu(restaurantId, menuName);
+    return this.appService.getFullMenu(restaurantId, menuName);
+  }
+
+  @Get('restaurants/:restaurantId/popular')
+  async getPopularMenu(
+    @Param('restaurantId') restaurantId: string,
+  ): Promise<Menu[]> {
+    return this.appService.getPopularMenu(restaurantId);
   }
 }

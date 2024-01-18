@@ -6,7 +6,6 @@ import { Menu } from './entities/menu.entity';
 @Injectable()
 export class AppService {
   private apiUrl = process.env.API_URL;
-  // private apiUrl = 'https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api';
 
   async fetchData<T>(url: string): Promise<T> {
     try {
@@ -31,5 +30,25 @@ export class AppService {
     return this.fetchData(
       `${this.apiUrl}/restaurants/${restaurantId}/menus/${menuName}/full.json`,
     );
+  }
+
+  async getPopularMenu(restaurantId: string): Promise<Menu[]> {
+    try {
+      const restaurant = await this.getRestaurant(restaurantId);
+
+      const menuDetailsPromises = restaurant.menus.map(async (menuName) => {
+        return await this.getFullMenu(restaurantId, menuName);
+      });
+
+      const menuDetails = await Promise.all(menuDetailsPromises);
+
+      const popularMenus = menuDetails.sort((menuA, menuB) => {
+        return menuA.sold - menuB.sold;
+      });
+
+      return popularMenus;
+    } catch (error) {
+      throw new Error('Failed to fetch popular menu data');
+    }
   }
 }
