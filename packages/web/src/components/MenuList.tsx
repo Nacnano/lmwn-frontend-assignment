@@ -61,21 +61,22 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <div className="flex items-center mb-4 justify-start">
+        <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
             type="text"
             placeholder="Search menu..."
             value={searchTerm}
             onChange={(e) => handleSearchBarChange(e)}
-            className="border border-gray-400 p-2 w-full rounded-md mr-2 max-w-xl"
+            className="border border-gray-400 p-2 w-auto rounded-md mr-2 max-w-lg"
           />
-          <div className="w-full max-w-xl flex justify-around items-center text-gray-600 gap-2">
-            <span className="w-1/6 text-right">{priceFilter[0]}</span>
-            <div className="w-3/4 h-4">
+          <div className="w-96 max-w-lg flex justify-start items-center text-gray-600 gap-2">
+            <span className="text-md w-1/2">Price Range</span>
+            <span className="w-1/6 text-center">{priceFilter[0]}</span>
+            <div className="w-3/4 h-4 justify-center">
               <Slider
-                className="slider"
+                className="slider flex flex-col items-center justify-center"
                 thumbClassName="h-4 w-4 bg-blue-500 rounded-full"
-                trackClassName="h-4 bg-blue-300 rounded-full"
+                trackClassName={`h-2 bg-blue-300 rounded-full`}
                 minDistance={50}
                 pearling={true}
                 value={priceFilter}
@@ -84,7 +85,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
                 onChange={(value) => setPriceFilter(value as number[])}
               />
             </div>
-            <span className="w-1/6 text-left">{priceFilter[1]}</span>
+            <span className="w-1/6 text-center">{priceFilter[1]}</span>
           </div>
         </div>
         <h2 className="text-2xl font-bold mb-4">Menu List</h2>
