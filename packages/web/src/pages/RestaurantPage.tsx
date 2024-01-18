@@ -3,7 +3,7 @@ import RestaurantDetails from "../components/RestaurantDetails";
 import useRestaurant from "../hooks/useRestaurant";
 import MenuList from "../components/MenuList";
 import { Restaurant } from "../common/types";
-import { sidebarList } from "../data/sidebarList";
+import { navbarList } from "../data/navbarList";
 import CustomLink from "../components/CustomLink";
 import MobileSidebar from "../components/MobileSidebar";
 import ScrollToTopButton from "../components/ScrollToTopButton";
@@ -26,7 +26,7 @@ export default function RestaurantPage() {
         </div>
 
         <div className="w-auto flex items-end gap-2 lg:p-4 fixed top-4 right-4 shadow-none">
-          {sidebarList.map((item, index) => (
+          {navbarList.map((item, index) => (
             <CustomLink
               key={index}
               to={item.path}

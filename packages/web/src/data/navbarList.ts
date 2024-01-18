@@ -1,4 +1,4 @@
-export const sidebarList = [
+export const navbarList = [
   {
     path: "/",
     text: "Back",

@@ -1,4 +1,4 @@
-import { sidebarList } from "../data/sidebarList";
+import { navbarList } from "../data/navbarList";
 import { useState } from "react";
 import CustomLink from "./CustomLink";
 
@@ -18,7 +18,7 @@ const MobileSidebar = () => {
       {showMobileNav && (
         <div className="">
           <div className="flex flex-col items-end gap-2 mt-2">
-            {sidebarList.map((item, index) => (
+            {navbarList.map((item, index) => (
               <CustomLink
                 key={index}
                 to={item.path}

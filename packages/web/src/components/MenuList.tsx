@@ -71,14 +71,12 @@ const MenuList = ({ menuNames }: MenuListProps) => {
 
   return (
     <div className="w-full px-4">
-      <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
+      <div className="pt-4 pb-8 px-4 ">
+        <hr id="popular-menus" className="mt-6 mb-12 border-gray-400" />
         <PopularMenusList popularMenus={popularMenus} />
 
-        <hr className="my-6 border-gray-400" />
-
-        <h2 id="all-menus" className="text-3xl font-bold mt-4 mb-4">
-          All Menus
-        </h2>
+        <hr id="all-menus" className="mt-6 mb-12 border-gray-400" />
+        <h2 className="text-4xl font-bold mt-4 mb-4">All Menus</h2>
 
         <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
