@@ -3,7 +3,6 @@ import MenuDetails from "./MenuCard";
 import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
-import Slider from "react-slider";
 import RangeSlider from "./RangeSlider";
 
 const defaultPriceRange = [0, 500];

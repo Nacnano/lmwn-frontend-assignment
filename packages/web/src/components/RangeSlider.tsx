@@ -1,7 +1,12 @@
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-const RangeSlider = ({ value, onChange }) => (
+interface RangeSliderProps {
+  value: number[];
+  onChange: (value: number | number[]) => void;
+}
+
+const RangeSlider = ({ value, onChange }: RangeSliderProps) => (
   <Slider
     range
     value={value}
