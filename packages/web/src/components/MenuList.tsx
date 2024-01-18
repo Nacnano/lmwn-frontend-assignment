@@ -61,15 +61,15 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
+        <div className="flex flex-wrap items-start mb-4 justify-start gap-4 divide-x-2 divide-gray-300">
           <input
             type="text"
             placeholder="Search menu"
             value={searchTerm}
             onChange={(e) => handleSearchBarChange(e)}
-            className="border border-gray-400 p-2 w-auto rounded-md mr-2 max-w-lg"
+            className="border border-gray-400 p-1 w-auto rounded-md mr-2 max-w-lg"
           />
-          <div className="w-full md:w-1/3">
+          <div className="px-5 w-full md:w-1/3">
             <div className="w-3/4 md:w-4/5">
               <div className="text-sm pb-1">
                 {priceFilter[0]}฿ - {priceFilter[1]}฿
