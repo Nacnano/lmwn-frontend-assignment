@@ -4,6 +4,7 @@ import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import Slider from "react-slider";
+import RangeSlider from "./RangeSlider";
 
 const defaultPriceRange = [0, 500];
 
@@ -69,24 +70,10 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             onChange={(e) => handleSearchBarChange(e)}
             className="border border-gray-400 p-2 w-auto rounded-md mr-2 max-w-lg"
           />
-          <div className="w-96 max-w-lg flex justify-start items-center text-gray-600 gap-2">
-            <span className="text-md w-1/2">Price Range</span>
-            <span className="w-1/6 text-center">{priceFilter[0]}</span>
-            <div className="w-3/4 h-4 justify-center">
-              <Slider
-                className="slider flex flex-col items-center justify-center"
-                thumbClassName="h-4 w-4 bg-blue-500 rounded-full"
-                trackClassName={`h-2 bg-blue-300 rounded-full`}
-                minDistance={50}
-                pearling={true}
-                value={priceFilter}
-                min={defaultPriceRange[0]}
-                max={defaultPriceRange[1]}
-                onChange={(value) => setPriceFilter(value as number[])}
-              />
-            </div>
-            <span className="w-1/6 text-center">{priceFilter[1]}</span>
-          </div>
+          <RangeSlider
+            value={priceFilter}
+            onChange={(value) => setPriceFilter(value as number[])}
+          />
         </div>
         <h2 className="text-2xl font-bold mb-4">Menu List</h2>
 
