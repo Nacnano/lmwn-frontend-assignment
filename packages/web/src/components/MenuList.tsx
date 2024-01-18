@@ -37,6 +37,11 @@ const MenuList = ({ menuNames }: MenuListProps) => {
     setSearchTerm(e.target.value);
   };
 
+  const handlePriceFilterChange = (value: number | number[]) => {
+    setVisibleMenuCount(12);
+    setPriceFilter(value as number[]);
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,7 +66,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <div className="flex flex-wrap items-start mb-4 justify-start gap-4 divide-x-2 divide-gray-300">
+        <div className="flex flex-wrap items-start mb-4 justify-start gap-4">
           <input
             type="text"
             placeholder="Search menu"
@@ -69,14 +74,14 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             onChange={(e) => handleSearchBarChange(e)}
             className="border border-gray-400 p-1 w-auto rounded-md mr-2 max-w-lg"
           />
-          <div className="px-5 w-full md:w-1/3">
+          <div className="px-2 w-full md:w-1/3">
             <div className="w-3/4 md:w-4/5">
               <div className="text-sm pb-1">
                 {priceFilter[0]}฿ - {priceFilter[1]}฿
               </div>
               <RangeSlider
                 value={priceFilter}
-                onChange={(value) => setPriceFilter(value as number[])}
+                onChange={(value) => handlePriceFilterChange(value)}
               />
             </div>
           </div>
@@ -93,8 +98,9 @@ const MenuList = ({ menuNames }: MenuListProps) => {
           <h3 className="font-medium text-2xl text-center py-5">
             No menu found
           </h3>
-        ) : menus.filter((menu) => menu).length < menuNames.length &&
-          visibleMenuCount < menuNames.length ? (
+        ) : visibleMenuCount < filteredMenus.length ||
+          (menus.filter((menu) => menu).length < menuNames.length &&
+            visibleMenuCount < menuNames.length) ? (
           <div
             className="pt-5 pb-40 flex items-center justify-center"
             ref={containerRef}
