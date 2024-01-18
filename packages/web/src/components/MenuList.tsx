@@ -5,6 +5,8 @@ import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import RangeSlider from "./RangeSlider";
 import usePopularMenus from "../hooks/usePopularMenus";
+import { debounce } from "lodash";
+// import debounce from "../utils/debounce.js";
 
 const defaultPriceRange = [0, 500];
 
@@ -35,15 +37,18 @@ const MenuList = ({ menuNames }: MenuListProps) => {
       menu.fullPrice <= priceFilter[1]
   );
 
-  const handleSearchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVisibleMenuCount(12);
-    setSearchTerm(e.target.value);
-  };
+  const handleSearchBarChange = debounce(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setVisibleMenuCount(12);
+      setSearchTerm(e.target.value);
+    },
+    300
+  );
 
-  const handlePriceFilterChange = (value: number | number[]) => {
+  const handlePriceFilterChange = debounce((value: number | number[]) => {
     setVisibleMenuCount(12);
     setPriceFilter(value as number[]);
-  };
+  }, 300);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

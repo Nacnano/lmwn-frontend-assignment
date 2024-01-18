@@ -10,6 +10,7 @@
     "autoprefixer": "^10.4.16",
     "axios": "^0.24.0",
     "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
     "postcss": "^8.4.33",
     "rc-slider": "^10.5.0",
     "react": "^17.0.2",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
