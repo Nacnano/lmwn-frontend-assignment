@@ -26,7 +26,7 @@ const ScrollToTopButton = () => {
 
   return (
     <button
-      className={`fixed bottom-4 right-4 z-50 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100
+      className={`fixed bottom-5 right-5 z-50 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100
       rounded-full transition p-1 border-2 border-gray-300 shadow-sm ${isVisible ? "visible" : "invisible"}`}
       onClick={scrollToTop}
     >
@@ -35,7 +35,7 @@ const ScrollToTopButton = () => {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="h-8 w-8"
+        className="h-10 w-10"
       >
         <path
           strokeLinecap="round"
