@@ -1,6 +1,6 @@
 export const sidebarList = [
-  { path: "#popular-menus", text: "Popular Menus" },
-  { path: "#all-menus", text: "All Menus" },
+  { path: "#popular-menus", text: "Popular" },
+  { path: "#all-menus", text: "All" },
   {
     path: "/",
     text: "Back",
