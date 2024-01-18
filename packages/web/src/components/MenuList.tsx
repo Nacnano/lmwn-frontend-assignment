@@ -72,7 +72,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             placeholder="Search menu"
             value={searchTerm}
             onChange={(e) => handleSearchBarChange(e)}
-            className="border border-gray-400 p-1 w-auto rounded-md mr-2 max-w-lg"
+            className="border border-gray-400 px-2 py-1  w-auto rounded-md mr-2 max-w-lg"
           />
           <div className="px-2 w-full md:w-1/3">
             <div className="w-3/4 md:w-4/5">
