@@ -23,7 +23,7 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
         className="w-full h-64 object-cover rounded-t-lg"
       />
       <div className="max-w-3xl mx-4 py-4 bg-white rounded">
-        <h1 className="text-3xl font-bold mb-4">{restaurant.name}</h1>
+        <h1 className="text-4xl font-bold mt-2 mb-4">{restaurant.name}</h1>
         <div className="flex flex-wrap gap-2 justify-start items-baseline">
           <p
             className={`text-xl font-semibold ${isOpenNow() ? "text-green-600" : "text-red-600"}`}

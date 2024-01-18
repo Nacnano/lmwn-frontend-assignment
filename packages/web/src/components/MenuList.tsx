@@ -69,7 +69,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <h2 className="text-2xl font-bold mb-4">Popular Menus</h2>
+        <h2 className="text-3xl font-bold mb-4">Popular Menus</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {popularMenus &&
             popularMenus.map((menu, index) => (
@@ -84,7 +84,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
 
         <hr className="my-6 border-gray-400" />
 
-        <h2 className="text-2xl font-bold mt-4 mb-4">All Menus</h2>
+        <h2 className="text-3xl font-bold mt-4 mb-4">All Menus</h2>
 
         <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
