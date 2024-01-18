@@ -82,6 +82,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
 
         <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
+            id="search-bar"
             type="text"
             placeholder="Search menu"
             value={searchTerm}
