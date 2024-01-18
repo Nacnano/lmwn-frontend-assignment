@@ -66,7 +66,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <div className="flex flex-wrap items-start mb-4 justify-start gap-4">
+        <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
             type="text"
             placeholder="Search menu"
