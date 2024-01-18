@@ -4,6 +4,7 @@ import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import RangeSlider from "./RangeSlider";
+import usePopularMenus from "../hooks/usePopularMenus";
 
 const defaultPriceRange = [0, 500];
 
@@ -16,6 +17,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const [priceFilter, setPriceFilter] = useState<number[]>(defaultPriceRange);
   const containerRef = useRef<HTMLDivElement>(null);
+  const popularMenus = usePopularMenus();
 
   // Remove duplicate menu names
   menuNames = [...new Set(menuNames)];
@@ -32,11 +34,6 @@ const MenuList = ({ menuNames }: MenuListProps) => {
       menu.fullPrice >= priceFilter[0] &&
       menu.fullPrice <= priceFilter[1]
   );
-
-  const popularMenus =
-    LoadedMenus.length === menuNames.length
-      ? LoadedMenus.sort((a, b) => b.sold - a.sold).slice(0, 6)
-      : [];
 
   const handleSearchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVisibleMenuCount(12);
@@ -95,13 +92,12 @@ const MenuList = ({ menuNames }: MenuListProps) => {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">Popular Menus</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {popularMenus.length
-            ? popularMenus.map((menu, index) => (
-                <MenuDetails key={index} menu={menu} />
-              ))
-            : ""}
+          {popularMenus &&
+            popularMenus.map((menu, index) => (
+              <MenuDetails key={index} menu={menu} />
+            ))}
         </div>
-        {popularMenus.length === 0 && (
+        {!popularMenus && (
           <div className="pt-5 pb-20 flex w-full items-center justify-center">
             <MoonLoader size={40} />
           </div>

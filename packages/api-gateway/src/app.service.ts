@@ -46,7 +46,7 @@ export class AppService {
         return menuA.sold - menuB.sold;
       });
 
-      return popularMenus;
+      return popularMenus.slice(0, 6);
     } catch (error) {
       throw new Error('Failed to fetch popular menu data');
     }
