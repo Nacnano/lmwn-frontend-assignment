@@ -1,9 +1,10 @@
 import { MoonLoader } from "react-spinners";
-import { Link } from "react-router-dom";
 import RestaurantDetails from "../components/RestaurantDetails";
 import useRestaurant from "../hooks/useRestaurant";
 import MenuList from "../components/MenuList";
 import { Restaurant } from "../common/types";
+import { sidebarList } from "../data/sidebarList";
+import CustomLink from "../components/CustomLink";
 
 export default function RestaurantPage() {
   const restaurant = useRestaurant() as Restaurant;
@@ -22,13 +23,17 @@ export default function RestaurantPage() {
           )}
         </div>
 
-        <Link
-          to="/"
-          className="fixed bottom-4 left-4 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-xl font-extrabold 
+        <div className="fixed top-4 left-4 flex flex-col items-start gap-2">
+          {sidebarList.map((item, index) => (
+            <CustomLink
+              to={item.path}
+              className=" bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-lg font-medium
           px-4 py-2 rounded-full transition border-2 border-gray-300 shadow-sm hover:shadow-md"
-        >
-          &#x2190; Back
-        </Link>
+            >
+              {item.text}
+            </CustomLink>
+          ))}
+        </div>
       </div>
     </>
   );

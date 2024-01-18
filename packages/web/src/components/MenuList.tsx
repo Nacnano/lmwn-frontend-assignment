@@ -5,7 +5,6 @@ import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import RangeSlider from "./RangeSlider";
 import usePopularMenus from "../hooks/usePopularMenus";
-import AnchorButton from "./AnchorButton";
 
 const defaultPriceRange = [0, 500];
 
@@ -70,9 +69,9 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   return (
     <div className="w-full px-4">
       <div className="mt-4 pt-8 pb-8 px-4 border-t-2 border-gray-300">
-        <AnchorButton id="all-menus" />
-
-        <h2 className="text-3xl font-bold mb-4">Popular Menus</h2>
+        <h2 id="popular-menus" className="text-3xl font-bold mb-4">
+          Popular Menus
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {popularMenus &&
             popularMenus.map((menu, index) => (
