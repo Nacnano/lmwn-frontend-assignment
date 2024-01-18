@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/rc-slider": "^9.3.1",
     "autoprefixer": "^10.4.16",
     "axios": "^0.24.0",
     "classnames": "^2.5.1",
