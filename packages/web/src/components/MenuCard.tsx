@@ -5,7 +5,7 @@ import LoadingMenuDetails from "./LoadingMenuCard";
 import MenuPrice from "./MenuPrice";
 
 interface MenuCardProps {
-  menu: Menu;
+  menu: Menu | null;
 }
 
 const MenuCard = ({ menu }: MenuCardProps) => {
