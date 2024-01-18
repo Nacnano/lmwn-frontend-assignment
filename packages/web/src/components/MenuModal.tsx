@@ -22,15 +22,15 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
             className="rounded-t-md w-full h-1/5 md:h-1/4 object-cover"
           />
         )}
-        <div className="p-4 flex flex-col justify-around items-start gap-2 h-4/5 md:h-3/4">
-          <div className="w-full h-5/6 overflow-y-auto scrollbar-hide">
+        <div className="pb-2 flex flex-col justify-between items-start gap-2 h-4/5 md:h-3/4">
+          <div className="p-4 w-full h-5/6 rounded-md bg-gray-50 overflow-y-auto scrollbar-hide">
             <h2 className="text-3xl font-bold mb-4">{menu.name}</h2>
             <MenuPrice menu={menu} />
 
             {menu.options && menu.options.length > 0 ? (
               <div className="h-2/3 md:h-3/5 mt-2">
                 <h3 className="text-xl font-semibold mb-2">Options:</h3>
-                <div className="mb-2 h-full overflow-y-auto bg-gray-50 rounded-md p-1">
+                <div className="mb-2 h-full overflow-y-auto bg-gray-100 rounded-md p-1">
                   <div className="list-disc pl-4">
                     {menu.options.map(
                       (option: MenuItemOption, index: number) => (
@@ -56,7 +56,7 @@ const MenuModal = ({ isOpen, menu }: MenuModalProps) => {
             )}
           </div>
 
-          <div className="w-full">
+          <div className="w-full pb-4">
             <div className="text-gray-800 opacity-60 text-center ">
               Press anywhere to close
             </div>
