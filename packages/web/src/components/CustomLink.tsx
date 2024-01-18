@@ -26,7 +26,6 @@ const CustomLink = ({ to, children, ...rest }: CustomLinkProps) => {
         section.scrollIntoView({ behavior: "smooth" });
       }
     };
-    console.log(to);
     return (
       <button onClick={() => scrollTo(to.slice(1, to.length))} {...rest}>
         {children}
