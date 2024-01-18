@@ -34,8 +34,8 @@ const MenuPrice = ({ menu }: MenuPriceProps) => {
           <span className="text-xl">{menu.fullPrice}฿</span>
         ) : (
           <div className="flex gap-2 items-baseline">
-            <span className="text-green-600 text-2xl">{finalPrice}฿</span>
-            <span className="line-through text-gray-400 text-xl">
+            <span className="text-green-600 text-3xl">{finalPrice}฿</span>
+            <span className="line-through text-gray-300 text-xl">
               {menu.fullPrice}฿
             </span>
           </div>
