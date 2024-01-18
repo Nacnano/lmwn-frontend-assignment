@@ -6,6 +6,7 @@ import { Restaurant } from "../common/types";
 import { sidebarList } from "../data/sidebarList";
 import CustomLink from "../components/CustomLink";
 import MobileSidebar from "../components/MobileSidebar";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function RestaurantPage() {
   const restaurant = useRestaurant() as Restaurant;
@@ -40,6 +41,8 @@ export default function RestaurantPage() {
         </div>
 
         <MobileSidebar />
+
+        <ScrollToTopButton />
       </div>
     </>
   );
