@@ -64,15 +64,22 @@ const MenuList = ({ menuNames }: MenuListProps) => {
         <div className="flex flex-wrap items-center mb-4 justify-start gap-4">
           <input
             type="text"
-            placeholder="Search menu..."
+            placeholder="Search menu"
             value={searchTerm}
             onChange={(e) => handleSearchBarChange(e)}
             className="border border-gray-400 p-2 w-auto rounded-md mr-2 max-w-lg"
           />
-          <RangeSlider
-            value={priceFilter}
-            onChange={(value) => setPriceFilter(value as number[])}
-          />
+          <div className="w-full md:w-1/3">
+            <div className="w-3/4 md:w-4/5">
+              <div className="text-sm pb-1">
+                {priceFilter[0]}฿ - {priceFilter[1]}฿
+              </div>
+              <RangeSlider
+                value={priceFilter}
+                onChange={(value) => setPriceFilter(value as number[])}
+              />
+            </div>
+          </div>
         </div>
         <h2 className="text-2xl font-bold mb-4">Menu List</h2>
 

@@ -21,7 +21,6 @@ const RangeSlider = ({ value, onChange }: RangeSliderProps) => (
     ]}
     railStyle={{ backgroundColor: "#ddd" }}
     activeDotStyle={{ backgroundColor: "#1890ff" }} // Blue color for the range
-    className="mt-2"
     pushable
   />
 );
