@@ -21,9 +21,11 @@ export default function RestaurantPage() {
             <MoonLoader size={50} />
           )}
         </div>
+
         <Link
           to="/"
-          className="fixed bottom-4 left-4 bg-gray-200 hover:bg-gray-500 text-gray-800 hover:text-gray-200 text-xl font-extrabold px-4 py-2 rounded-full transition border-4 border-gray-300"
+          className="fixed bottom-4 left-4 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-xl font-extrabold 
+          px-4 py-2 rounded-full transition border-2 border-gray-300 shadow-sm hover:shadow-md"
         >
           &#x2190; Back
         </Link>

@@ -28,7 +28,7 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
           <p
             className={`text-xl font-semibold ${isOpenNow() ? "text-green-600" : "text-red-600"}`}
           >
-            {isOpenNow() ? "Open" : "Closed"}
+            {isOpenNow() ? "Now Open" : "Now Closed"}
           </p>
           <h2 className="text-lg text-gray-400 font-normal">
             {" ⋅ "}

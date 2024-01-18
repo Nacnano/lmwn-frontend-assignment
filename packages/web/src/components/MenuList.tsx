@@ -84,7 +84,7 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             <MoonLoader size={40} />
           </div>
         ) : (
-          <h3 className="font-medium text-2xl text-center pt-10 pb-5">
+          <h3 className="font-medium text-2xl text-center pt-10 pb-10">
             End of the Menu
           </h3>
         )}
