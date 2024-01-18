@@ -56,7 +56,7 @@ const MenuCard = ({ menu }: MenuCardProps) => {
               <MenuPrice menu={menu} />
 
               {inStock ? (
-                <p className="text-gray-500 text-right text-lg">
+                <p className="text-gray-500 text-right text-md">
                   {inStock} Left
                 </p>
               ) : (
