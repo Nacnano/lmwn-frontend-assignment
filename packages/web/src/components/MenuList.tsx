@@ -23,14 +23,17 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   const menus = menuNames.map(
     (menuName) => useMenu({ menuName, type: MenuType.Full }) as Menu
   );
-  const filteredMenus = menus.filter(
+  const LoadedMenus = menus.filter((menu) => menu) as Menu[];
+
+  const filteredMenus = LoadedMenus.filter(
     (menu) =>
-      menu &&
       menu.name &&
       menu.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       menu.fullPrice >= priceFilter[0] &&
       menu.fullPrice <= priceFilter[1]
   );
+
+  const popularMenus = LoadedMenus.sort((a, b) => b.sold - a.sold).slice(0, 6);
 
   const handleSearchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVisibleMenuCount(12);
@@ -86,8 +89,15 @@ const MenuList = ({ menuNames }: MenuListProps) => {
             </div>
           </div>
         </div>
-        <h2 className="text-2xl font-bold mb-4">Menu List</h2>
 
+        <h2 className="text-2xl font-bold mt-8 mb-4">Popular Menus</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {popularMenus.map((menu, index) => (
+            <MenuDetails key={index} menu={menu} />
+          ))}
+        </div>
+
+        <h2 className="text-2xl font-bold mb-4">All Menus</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredMenus.slice(0, visibleMenuCount).map((menu, index) => (
             <MenuDetails key={index} menu={menu} />
