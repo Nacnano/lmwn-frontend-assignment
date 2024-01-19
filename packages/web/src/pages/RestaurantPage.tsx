@@ -3,7 +3,7 @@ import RestaurantDetails from "../components/Restaurant/RestaurantDetails";
 import useRestaurant from "../hooks/useRestaurant";
 import MenuList from "../components/Menu/MenuList";
 import { Restaurant } from "../common/types";
-import MobileSidebar from "../components/MobileSidebar";
+import { MobileSidebar } from "../components";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import NavBar from "../components/NavBar";
 
