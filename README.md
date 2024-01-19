@@ -1,6 +1,8 @@
-# NOTE
+# NOTE FROM AUTHOR
 
-## Please use Node 18.19.0 (In case there is some serious dependencies mismatch problem)
+### Please use Node 18.19.0 (In case there is some serious dependencies problem)
+
+### Name : Chotpisit Adunsehawat ([Nacnano](https://github.com/nacnano/))
 
 # Frontend Assignment 2022
 
