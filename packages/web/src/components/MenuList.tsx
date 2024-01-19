@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import MenuCard from "./MenuCard";
-import { MoonLoader } from "react-spinners";
 import useMenu from "../hooks/useMenu";
 import { Menu, MenuType } from "../common/types";
 import RangeSlider from "./RangeSlider";
@@ -18,7 +17,6 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleMenuCount, setVisibleMenuCount] = useState(12);
   const [priceFilter, setPriceFilter] = useState<number[]>(defaultPriceRange);
-  const containerRef = useRef<HTMLDivElement>(null);
   const popularMenus = usePopularMenus();
 
   // Remove duplicate menu names
@@ -49,25 +47,22 @@ const MenuList = ({ menuNames }: MenuListProps) => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleMenuCount((prevCount) => prevCount + 12);
-        }
-      },
-      { threshold: 1 }
-    );
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const innerHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (scrollY + innerHeight >= scrollHeight) {
+        setVisibleMenuCount((prevCount) => prevCount + 12);
       }
     };
-  }, [containerRef]);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="w-full px-4">
@@ -113,11 +108,9 @@ const MenuList = ({ menuNames }: MenuListProps) => {
         ) : visibleMenuCount < filteredMenus.length ||
           (menus.filter((menu) => menu).length < menuNames.length &&
             visibleMenuCount < menuNames.length) ? (
-          <div
-            className="pt-5 pb-40 flex items-center justify-center"
-            ref={containerRef}
-          >
-            <MoonLoader size={40} />
+          <div className="pt-5 pb-60 flex flex-col items-center justify-center gap-2">
+            {/* <MoonLoader size={40} /> */}
+            <h1 className="text-2xl">Scroll More</h1>
           </div>
         ) : (
           <h3 className="font-medium text-2xl text-center pt-10 pb-10">
