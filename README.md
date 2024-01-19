@@ -1,3 +1,7 @@
+# NOTE
+
+## Please use Node 18.19.0 (In case there is some serious dependencies mismatch problem)
+
 # Frontend Assignment 2022
 
 [English version](README-eng.md)
