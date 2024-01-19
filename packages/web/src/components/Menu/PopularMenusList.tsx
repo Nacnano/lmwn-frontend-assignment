@@ -2,11 +2,11 @@ import { MoonLoader } from "react-spinners";
 import { Menu } from "../../common/types";
 import MenuCard from "./MenuCard";
 
-interface PopularMenusList {
+interface PopularMenusListProps {
   popularMenus: Menu[] | null;
 }
 
-const PopularMenusList = ({ popularMenus }: PopularMenusList) => {
+const PopularMenusList = ({ popularMenus }: PopularMenusListProps) => {
   return (
     <div>
       <h2 className="text-4xl font-bold mb-4">Popular Menus</h2>
