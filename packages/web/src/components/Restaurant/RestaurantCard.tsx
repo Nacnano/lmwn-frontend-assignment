@@ -1,5 +1,5 @@
-import { Restaurant } from "../common/types";
-import useRestaurant from "../hooks/useRestaurant";
+import { Restaurant } from "../../common/types";
+import useRestaurant from "../../hooks/useRestaurant";
 import { Link } from "react-router-dom";
 
 interface RestaurantCardProps {

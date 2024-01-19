@@ -1,4 +1,4 @@
-import { Menu, MenuItemOption } from "../common/types";
+import { Menu, MenuItemOption } from "../../common/types";
 import MenuPrice from "./MenuPrice";
 
 interface MenuModalProps {

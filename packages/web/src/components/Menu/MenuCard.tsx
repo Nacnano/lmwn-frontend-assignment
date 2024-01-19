@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu } from "../common/types";
+import { Menu } from "../../common/types";
 import MenuModal from "./MenuModal";
 import LoadingMenuDetails from "./LoadingMenuCard";
 import MenuPrice from "./MenuPrice";

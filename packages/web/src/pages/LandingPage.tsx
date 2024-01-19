@@ -1,4 +1,4 @@
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard from "../components/Restaurant/RestaurantCard";
 import { restaurantList } from "../data/restaurantList";
 
 export default function LandingPage() {

@@ -1,4 +1,4 @@
-import { Menu } from "../common/types";
+import { Menu } from "../../common/types";
 
 interface MenuPriceProps {
   menu: Menu;

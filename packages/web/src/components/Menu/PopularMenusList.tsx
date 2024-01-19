@@ -1,5 +1,5 @@
 import { MoonLoader } from "react-spinners";
-import { Menu } from "../common/types";
+import { Menu } from "../../common/types";
 import MenuCard from "./MenuCard";
 
 interface PopularMenusList {

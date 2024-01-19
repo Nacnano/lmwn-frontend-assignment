@@ -1,4 +1,4 @@
-import { Restaurant } from "../common/types";
+import { Restaurant } from "../../common/types";
 
 interface RestaurantDetailsProps {
   restaurant: Restaurant;

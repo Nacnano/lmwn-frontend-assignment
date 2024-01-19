@@ -1,7 +1,7 @@
 import { MoonLoader } from "react-spinners";
-import RestaurantDetails from "../components/RestaurantDetails";
+import RestaurantDetails from "../components/Restaurant/RestaurantDetails";
 import useRestaurant from "../hooks/useRestaurant";
-import MenuList from "../components/MenuList";
+import MenuList from "../components/Menu/MenuList";
 import { Restaurant } from "../common/types";
 import MobileSidebar from "../components/MobileSidebar";
 import ScrollToTopButton from "../components/ScrollToTopButton";

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MenuCard from "./MenuCard";
-import useMenu from "../hooks/useMenu";
-import { Menu, MenuType } from "../common/types";
-import RangeSlider from "./RangeSlider";
-import usePopularMenus from "../hooks/usePopularMenus";
+import useMenu from "../../hooks/useMenu";
+import { Menu, MenuType } from "../../common/types";
+import RangeSlider from "../RangeSlider";
+import usePopularMenus from "../../hooks/usePopularMenus";
 import { debounce } from "lodash";
 import PopularMenusList from "./PopularMenusList";
 
