@@ -1,9 +1,7 @@
 const LoadingMenuCard = () => {
   return (
-    <div className={`border rounded-md mb-4 transition shadow-md`}>
-      <div
-        className={`flex flex-col justify-between w-full h-full animate-pulse`}
-      >
+    <div className="border rounded-md mb-4 transition shadow-md">
+      <div className="flex flex-col justify-between w-full h-full animate-pulse">
         <div>
           <div className="bg-gray-200 rounded-t-md w-full h-40 flex justify-center items-center"></div>
           <div className="px-4">
