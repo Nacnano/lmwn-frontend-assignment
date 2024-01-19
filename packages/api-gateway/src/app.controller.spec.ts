@@ -14,11 +14,9 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('App Controller (e2e)', () => {
-    it('/restaurants/227018 (GET)', async () => {
-      const response = await appController.getRestaurant('227018');
-
-      const expectedResponseBody = {
+  describe('App Controller', () => {
+    it('getRestaurant', async () => {
+      const mockRestaurant = {
         name: 'Ekkamai Macchiato - Home Brewer',
         id: '227018',
         coverImage:
@@ -227,7 +225,282 @@ describe('AppController', () => {
         activeTimePeriod: { open: '08:00', close: '17:00' },
       };
 
-      expect(response).toEqual(expectedResponseBody);
+      const result = await appController.getRestaurant('227018');
+
+      expect(result).toMatchObject(mockRestaurant);
+    });
+  });
+
+  describe('getFullMenu', () => {
+    it('getFullMenu', async () => {
+      const mockFullMenu = {
+        name: 'Iced Caffe Latte',
+        id: 'Iced Caffe Latte',
+        thumbnailImage:
+          'https://img.wongnai.com/p/100x100/2021/01/29/8ff927160a7e44d6b5c9d9848912452e.jpg',
+        discountedPercent: 0,
+        sold: 100,
+        fullPrice: 110,
+        totalInStock: 200,
+        options: [
+          {
+            label: 'Iced Caffe Latte',
+            choices: [
+              { label: 'Take Awayใส่แก้วกลับบ้าน' },
+              { label: 'Non Sweet ไม่หวาน' },
+              { label: 'Less Sweet หวานน้อย' },
+              { label: 'Extra Sweet เพิ่มหวาน' },
+              { label: 'House Blend (Fruity) กาแฟคั่วกลาง' },
+              { label: 'Latte Art Blend (Strong) กาแฟคั่วเข้ม' },
+              { label: 'After Food รับหลังอาหาร' },
+              { label: 'แยกน้ำแข็ง Bottle' },
+              { label: 'นมถั่วเหลือง Soy Milk' },
+              { label: 'Almond Milk นมอัลมอนด์' },
+              { label: 'Full Shot กาแฟเข้ม' },
+            ],
+          },
+        ],
+        largeImage:
+          'https://img.wongnai.com/p/1920x0/2021/01/29/8ff927160a7e44d6b5c9d9848912452e.jpg',
+      };
+
+      const result = await appController.getFullMenu(
+        '227018',
+        'Iced Caffe Latte',
+      );
+
+      expect(result).toEqual(mockFullMenu);
+    });
+  });
+
+  describe('getShortMenu', () => {
+    it('getShortMenu', async () => {
+      const mockShortMenu = {
+        name: 'Iced Caffe Latte',
+        id: 'Iced Caffe Latte',
+        thumbnailImage:
+          'https://img.wongnai.com/p/100x100/2021/01/29/8ff927160a7e44d6b5c9d9848912452e.jpg',
+        discountedPercent: 0,
+        fullPrice: 110,
+        sold: 100,
+        totalInStock: 200,
+      };
+
+      const result = await appController.getShortMenu(
+        '227018',
+        'Iced Caffe Latte',
+      );
+
+      expect(result).toEqual(mockShortMenu);
+    });
+  });
+
+  describe('getPopularMenu', () => {
+    it('getPopularMenu', async () => {
+      const mockPopularMenu = [
+        {
+          name: 'Promotion A หมูสามชั้นคั่วพริกกระเทียมไข่ดาว',
+          id: 'Promotion A หมูสามชั้นคั่วพริกกระเทียมไข่ดาว',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/07/23/648ea50d691d407eb0cb96efab951b48.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 158,
+          totalInStock: 200,
+          options: [
+            {
+              label: 'สามชั้นคั่วพริกกระเทียม',
+              choices: [
+                { label: 'Take Away ใส่กล่อง' },
+                { label: 'ไม่เผ็ด Non Spicy' },
+                { label: 'เผ็ดน้อย Less Spicy' },
+                { label: 'เผ็ดกลาง Normal Spicy' },
+                { label: 'เพิ่มเผ็ด Extra Spicy' },
+                { label: 'ไม่ใส่กระเทียม No Garlic' },
+                { label: 'ไม่รับข้าว No Rice' },
+                { label: 'ข้าวน้อย Less Rice' },
+                { label: 'ไม่รับไข่ No Egg' },
+                { label: 'ไข่ดาวไม่สุก Sunny Side Up Egg' },
+                { label: 'ไข่ดาวสุก Fully Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่ข้น Half Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่เจียว Thai Style Omelette' },
+                { label: 'เปลี่ยนเป็นไข่ออนเซ็น Onsen Egg' },
+              ],
+            },
+          ],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/07/23/648ea50d691d407eb0cb96efab951b48.jpg',
+        },
+        {
+          name: 'Promotion B กะเพราหมูสับ ไข่ดาว',
+          id: 'Promotion B กะเพราหมูสับ ไข่ดาว',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/07/23/29eacbe29c734379a8390963d3926d25.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 128,
+          totalInStock: 200,
+          options: [
+            {
+              label: 'กะเพราหมูสับไข่ดาว',
+              choices: [
+                { label: 'ไม่เผ็ด Non Spicy' },
+                { label: 'เผ็ดน้อย Less Spicy' },
+                { label: 'เผ็ดกลาง Normal Spicy' },
+                { label: 'เพิ่มเผ็ด Extra Spicy' },
+                { label: 'ไม่ใส่กระเทียม No Garlic' },
+                { label: 'ไม่ใส่ใบกะเพรา No Holy Basil' },
+                { label: 'ไข่ดาวไม่สุก Sunny Side Up Egg' },
+                { label: 'ไข่ดาวสุก Fully Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่ข้น Half Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่เจียว Thai Style Omelette' },
+                { label: 'เปลี่ยนเป็นไข่ออนเซ็น Onsen Egg' },
+              ],
+            },
+          ],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/07/23/29eacbe29c734379a8390963d3926d25.jpg',
+        },
+        {
+          name: 'Promotion C กะเพราเนื้อสับ ไข่ดาว',
+          id: 'Promotion C กะเพราเนื้อสับ ไข่ดาว',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/07/23/45794e90d05a45c1afae9e752ee49e4a.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 168,
+          totalInStock: 200,
+          options: [
+            {
+              label: 'กะเพราเนื้อสับไข่ดาว',
+              choices: [
+                { label: 'ไม่เผ็ด Non Spicy' },
+                { label: 'เผ็ดน้อย Less Spicy' },
+                { label: 'เผ็ดกลาง Normal Spicy' },
+                { label: 'เพิ่มเผ็ด Extra Spicy' },
+                { label: 'ไม่ใส่กระเทียม No Garlic' },
+                { label: 'ไม่ใส่ใบกะเพรา No Holy Basil' },
+                { label: 'ไข่ดาวไม่สุก Sunny Side Up Egg' },
+                { label: 'ไข่ดาวสุก Fully Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่ข้น Half Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่เจียว Thai Style Omelette' },
+                { label: 'เปลี่ยนเป็นไข่ออนเซ็น Onsen Egg' },
+              ],
+            },
+          ],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/07/23/45794e90d05a45c1afae9e752ee49e4a.jpg',
+        },
+        {
+          name: 'Promotion D ข้าวหมูกระเทียมไข่ดาว',
+          id: 'Promotion D ข้าวหมูกระเทียมไข่ดาว',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/08/05/0e8439b537244c09a8669849c5fb995e.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 128,
+          totalInStock: 200,
+          options: [],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/08/05/0e8439b537244c09a8669849c5fb995e.jpg',
+        },
+        {
+          name: 'Set A กะเพราหมูสับไข่ดาว + กาแฟ',
+          id: 'Set A กะเพราหมูสับไข่ดาว + กาแฟ',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/04/16/849fae362cd043e6b68cf6ba55a8457c.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 208,
+          totalInStock: 200,
+          options: [
+            {
+              label: 'กะเพราหมูสับไข่ดาว',
+              choices: [
+                { label: 'ไม่เผ็ด Non Spicy' },
+                { label: 'เผ็ดน้อย Less Spicy' },
+                { label: 'เผ็ดกลาง Normal Spicy' },
+                { label: 'เพิ่มเผ็ด Extra Spicy' },
+                { label: 'ไม่ใส่กระเทียม No Garlic' },
+                { label: 'ไม่ใส่ใบกะเพรา No Holy Basil' },
+                { label: 'ไข่ดาวไม่สุก Sunny Side Up Egg' },
+                { label: 'ไข่ดาวสุก Fully Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่ข้น Half Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่เจียว Thai Style Omelette' },
+                { label: 'เปลี่ยนเป็นไข่ออนเซ็น Onsen Egg' },
+              ],
+            },
+            {
+              label: 'เครื่องดื่ม',
+              choices: [
+                { label: 'Iced Americano' },
+                { label: 'Iced Caffe Latte' },
+                { label: 'Iced Caramel Macchiato' },
+                { label: 'Iced Caffe Mocha' },
+                { label: 'Caramel Macadamia Macchiato' },
+                { label: 'Espresso x Orange' },
+                { label: 'Iced Chocolate' },
+                { label: 'Iced Lemonade' },
+                { label: 'Thai Milk Tea' },
+                { label: 'Lychee and Rose Tea' },
+                { label: 'Peach Tea' },
+                { label: 'ใส่ขวดไม่เอาน้ำแข็ง - Bottle No Ice' },
+                { label: 'ใส่แก้วไม่เอาน้ำแข็ง - No Ice' },
+              ],
+            },
+          ],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/04/16/849fae362cd043e6b68cf6ba55a8457c.jpg',
+        },
+        {
+          name: 'Set B หมูกระเทียมไข่ดาว + กาแฟ',
+          id: 'Set B หมูกระเทียมไข่ดาว + กาแฟ',
+          thumbnailImage:
+            'https://img.wongnai.com/p/100x100/2021/04/16/ced800c9c2104861abc698d3ac6dffa8.jpg',
+          discountedPercent: 0,
+          sold: 100,
+          fullPrice: 208,
+          totalInStock: 200,
+          options: [
+            {
+              label: 'หมูกระเทียมไข่ดาว',
+              choices: [
+                { label: 'ไม่ใส่กระเทียม No Garlic' },
+                { label: 'ใส่พริก Add Chilli' },
+                { label: 'ไข่ดาวไม่สุก Sunny Side Up Egg' },
+                { label: 'ไข่ดาวสุก Fully Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่ข้น Half Cooked Egg' },
+                { label: 'เปลี่ยนเป็นไข่เจียว Thai Style Omelette' },
+                { label: 'เปลี่ยนเป็นไข่ออนเซ็น Onsen Egg' },
+              ],
+            },
+            {
+              label: 'เครื่องดื่ม',
+              choices: [
+                { label: 'Iced Americano' },
+                { label: 'Iced Caffe Latte' },
+                { label: 'Iced Caramel Macchiato' },
+                { label: 'Iced Caffe Mocha' },
+                { label: 'Caramel Macadamia Macchiato' },
+                { label: 'Espresso x Orange' },
+                { label: 'Iced Chocolate' },
+                { label: 'Iced Lemonade' },
+                { label: 'Thai Milk Tea' },
+                { label: 'Lychee and Rose Tea' },
+                { label: 'Peach Tea' },
+                { label: 'ใส่ขวดไม่เอาน้ำแข็ง - Bottle No Ice' },
+                { label: 'ใส่แก้วไม่เอาน้ำแข็ง - No Ice' },
+              ],
+            },
+          ],
+          largeImage:
+            'https://img.wongnai.com/p/1920x0/2021/04/16/ced800c9c2104861abc698d3ac6dffa8.jpg',
+        },
+      ];
+
+      const result = await appController.getPopularMenu('227018');
+
+      expect(result).toEqual(mockPopularMenu);
     });
   });
 });
