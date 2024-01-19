@@ -8,7 +8,7 @@ const NavBar = () => {
         <CustomLink
           key={index}
           to={item.path}
-          className="bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-lg font-medium
+          className="bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-lg md:text-2xl font-medium
         px-4 py-2 rounded-full transition border-2 border-gray-300 shadow-sm hover:shadow-md opacity-90"
         >
           {item.text}
